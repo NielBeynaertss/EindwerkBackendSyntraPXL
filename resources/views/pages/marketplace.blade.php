@@ -8,28 +8,32 @@
         <button class="btn btn-primary" type="button" onclick="document.getElementById('listingModal').showModal()">Make Listing</button>
 
         <dialog id="listingModal">
-            <form>
+            <form action="{{ route('storeListing') }}" method="post">
+                @csrf
                 <div class="row">
                     <div class="col">
                         <label for="title">Item:</label><br><br>
-                        <label for="title">Category:</label><br><br>
-                        <label for="type">Type of Transaction:</label><br><br>
-                        <label for="city">Stad / Gemeente:</label><br><br>
+                        <label for="category">Category:</label><br><br>
+                        <label for="typeOfTransaction">Type of Transaction:</label><br><br>
+                        <label for="location">Stad / Gemeente:</label><br><br>
                         <label for="description">Beschrijving:</label><br><br>
                     </div>
                     <div class="col">
-                        <input type="text" id="item" name="item" required><br><br>
+                        <input type="text" id="title" name="title" required><br><br>
+                        
                         <select id="category" name="category" required>
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select><br><br>
-                        <select id="type" name="type" required>
+                        
+                        <select id="typeOfTransaction" name="typeOfTransaction" required>
                             @foreach($typeOfTransactions as $type)
                                 <option value="{{ $type->id }}">{{ $type->name }}</option>
                             @endforeach
                         </select><br><br>
-                        <input type="text" id="city" name="city" required><br><br>
+                        
+                        <input type="text" id="location" name="location" required><br><br>
                         <input type="text" id="description" name="description" required><br><br>
                     </div>
                 </div>

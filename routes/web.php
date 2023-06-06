@@ -37,4 +37,5 @@ Route::controller(LoginRegisterController::class)->group(function() {
 Route::get('/settings', [SettingsController::class, 'showSettingsPage'])->name('settings');
 
 Route::get('/marketplace', [ListingController::class, 'showMarketplacePage'])->name('marketplace');
+Route::post('/store', [ListingController::class, 'storeListing'])->name('storeListing');
 
