@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginRegisterController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\ListingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,4 +36,5 @@ Route::controller(LoginRegisterController::class)->group(function() {
 
 Route::get('/settings', [SettingsController::class, 'showSettingsPage'])->name('settings');
 
+Route::get('/marketplace', [ListingController::class, 'showMarketplacePage'])->name('marketplace');
 
