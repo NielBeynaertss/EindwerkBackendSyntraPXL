@@ -1,6 +1,16 @@
 @extends('auth.layouts')
 
 @section('content')
+<style>
+    .favorite-icon {
+        color: #888; /* Default color */
+        cursor: pointer;
+    }
+    .favorite-icon.active {
+        color: red; /* Color when active */
+
+    }
+</style>
 
 <div class="row justify-content-center mt-5">
     <div class="col-md-10">
@@ -41,7 +51,48 @@
                 <button type="button" onclick="document.getElementById('listingModal').close()">Cancel</button>
             </form>
         </dialog>
+
+
+        <div class="mt-5">
+            <h3>Listings</h3>
+            <div class="row">
+                @foreach($listings as $listing)
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title">{{ $listing->title }}</h5>
+                                    </div>
+                                    <div class="col d-flex justify-content-end">
+                                        <a href="#" class="favorite-icon"><i class="fa-solid fa-star"></i></a>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="card-text">{{ $listing->description }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+
+
     </div>    
 </div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.favorite-icon').click(function() {
+            $(this).toggleClass('active');
+        });
+    });
+</script>
 
 @endsection
