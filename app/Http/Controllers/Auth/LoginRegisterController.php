@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+
 
 class LoginRegisterController extends Controller
 {
@@ -54,8 +56,8 @@ class LoginRegisterController extends Controller
             'password' => 'required|min:8|confirmed'
         ]);
 
-        Member::create([
-            'lastname' => $request->lastname, // Fix the field name here
+        $member = Member::create([
+            'lastname' => $request->lastname,
             'firstname' => $request->firstname,
             'email' => $request->email,
             'phone' => $request->phone,
@@ -64,9 +66,16 @@ class LoginRegisterController extends Controller
             'postalcode' => $request->postalcode,
             'password' => Hash::make($request->password),
             'approved' => 0,
-            'youthorganisation_id' => ($request->youthorganisation),
+            'youthorganisation_id' => $request->youthorganisation,
+            'approved_email_sent' => 0,
         ]);
-        
+
+        // Additional logic, such as sending email verification, logging in the user, etc.
+        Mail::send('mail.registration-mail', $request->all(), function($message){
+            $message->to(request('email'))
+            ->subject('Bedankt voor uw registratie, '. request('firstname').'.');
+        });
+
         return view('welcome');
     }
 

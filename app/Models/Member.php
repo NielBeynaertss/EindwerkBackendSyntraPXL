@@ -23,5 +23,6 @@ class Member extends Model implements AuthenticatableContract
         'approved',
         'youthorganisation_id',
         'password',
+        'approved_email_sent'
     ];
 }
