@@ -10,16 +10,16 @@ class ListingController extends Controller
 {
     public function showMarketplacePage()
     {
-        if(Auth::guard('member')->check())
-        {
+        $member = Auth::guard('member')->user();
+
+        if ($member && $member->approved) {
             return view('pages.marketplace');
         }
-        
-        return redirect()->route('login')
-            ->withErrors([
-            'email' => 'Please login to access the dashboard.',
-        ])->onlyInput('email');
+
+        return redirect()->route('dashboard')->with('message', 'This page can only be accessed once your account has been approved.');
     }
+
+    
 
     
 }

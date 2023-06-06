@@ -10,14 +10,12 @@ class SettingsController extends Controller
 {
     public function showSettingsPage()
     {
-        if(Auth::guard('member')->check())
-        {
+        $member = Auth::guard('member')->user();
+
+        if ($member && $member->approved) {
             return view('auth.settings');
         }
-        
-        return redirect()->route('login')
-            ->withErrors([
-            'email' => 'Please login to access the dashboard.',
-        ])->onlyInput('email');
+
+        return redirect()->route('dashboard')->with('message', 'This page can only be accessed once your account has been approved.');
     }
 }
