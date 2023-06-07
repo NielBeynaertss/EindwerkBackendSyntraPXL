@@ -65,7 +65,9 @@
                                         <h5 class="card-title">{{ $listing->title }}</h5>
                                     </div>
                                     <div class="col d-flex justify-content-end">
-                                        <a href="#" class="favorite-icon"><i class="fa-solid fa-star"></i></a>
+                                        <a href="#" class="favorite-icon">
+                                            <i class="favorite-icon fa-solid fa-star @if(in_array($listing->id, $favourites)) active @endif" data-listing-id="{{ $listing->id }}" onclick="toggleFavorite({{ $listing->id }})"></i>
+                                        </a>
                                     </div>
                                     <div class="row">
                                         <div class="col">
@@ -93,6 +95,21 @@
             $(this).toggleClass('active');
         });
     });
+
+    function toggleFavorite(listingId) {
+    $.ajax({
+        url: '/toggleFavorite/' + listingId,
+        method: 'GET',
+        success: function(response) {
+            // Handle success response if needed
+            console.log('gelukt');
+        },
+        error: function(xhr) {
+            console.error(xhr);
+        }
+    });
+}
+
 </script>
 
 @endsection
