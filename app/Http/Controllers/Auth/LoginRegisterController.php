@@ -42,7 +42,7 @@ class LoginRegisterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeNewMember(Request $request)
     {
         $request->validate([
             'lastname' => 'required|string|max:250',
