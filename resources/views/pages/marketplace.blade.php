@@ -22,9 +22,32 @@
 
 <div class="row justify-content-center mt-5">
     <div class="col-md-10">
-        <h2 class="text-center">Marketplace</h2>
-        <button class="btn btn-primary" type="button" onclick="document.getElementById('createListingDialog').showModal()">Make Listing</button>
 
+
+        <div class="row">
+            <h2 class="text-center">Marketplace</h2>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col d-flex justify-content-end">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-filter"></i> Filters
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li><a class="dropdown-item" href="#">Alphabetical</a></li>
+                      <li><a class="dropdown-item" href="#">Only sell</a></li>
+                      <li><a class="dropdown-item" href="#">Only loan</a></li>
+                    </ul>
+                </div>
+                <div class="col-2 d-flex justify-content-end ml-2">
+                    <button class="btn btn-primary" type="button" onclick="document.getElementById('createListingDialog').showModal()">Make Listing</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!--Create listing popup-->
         <dialog id="createListingDialog">
             <form action="{{ route('storeListing') }}" method="post">
                 @csrf
@@ -59,43 +82,42 @@
             </form>
         </dialog>
 
-
-        <div class="mt-5">
-            <h3>Listings</h3>
-            <div class="row">
-                @foreach($listings as $listing)
-                    <div class="col-md-3 mb-3">
-                        <a href="{{ route('listingDetail', ['id' => $listing->id]) }}" class="text-decoration-none">
-                            <div class="card listing-card">
-                                <div class="card-body" style="height: 150px">
+        <div class="row mt-3">
+            @foreach($listings as $listing)
+                <div class="col-lg-4 mb-3">
+                    <a href="{{ route('listingDetail', ['id' => $listing->id]) }}" class="text-decoration-none">
+                        <div class="card listing-card">
+                            <div class="card-body" style="height: 150px">
+                                <div class="row">
                                     <div class="row">
-                                        <div class="row">
-                                            <div class="col">
-                                                <h5 class="card-title">{{ $listing->title }}</h5>
-                                            </div>
-                                            <div class="col d-flex justify-content-end">
-                                                <a href="#" class="favorite-icon">
-                                                    <i class="favorite-icon fa-solid fa-star"></i>
-                                                </a>
-                                            </div>
+                                        <div class="col">
+                                            <h5 class="card-title">{{ $listing->title }}</h5>
                                         </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <p class="card-text">{{ $listing->type_of_transaction }}</p>
-                                            </div>
+                                        <div class="col d-flex justify-content-end">
+                                            <a href="#" class="favorite-icon">
+                                                <i class="favorite-icon fa-solid fa-star"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="card-text">{{ $listing->type_of_transaction }}</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </a>
-                    </div>
-                @endforeach
+                        </div>
+                    </a>
+                </div>
+            @endforeach
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <!-- Display pagination links -->
+                {{ $listings->links() }}
             </div>
         </div>
         
-        
-        
-
     </div>    
 </div>
 

@@ -8,6 +8,7 @@ use App\Models\TypeOfTransaction;
 use Illuminate\Support\Facades\DB;
 use App\Models\Category;
 use App\Models\Listing;
+use Illuminate\Pagination\Paginator;
 
 
 class ListingController extends Controller
@@ -16,18 +17,19 @@ class ListingController extends Controller
     public function showMarketplacePage()
     {
         $member = Auth::guard('member')->user();
-    
+        
         if ($member && $member->approved) {
-
             $categories = Category::all();
-            $listings = Listing::all(); // Assuming you have a Listing model
+            $listings = Listing::paginate(12); // Use paginate() method to retrieve only 8 listings
 
-    
+            Paginator::useBootstrap(); // Use Bootstrap styling for the pagination links
+
             return view('pages.marketplace', compact('categories', 'listings'));
         }
-    
+        
         return redirect()->route('dashboard')->with('message', 'This page can only be accessed once your account has been approved');
-    }    
+    }
+   
 
     
     public function storeListing(Request $request)
