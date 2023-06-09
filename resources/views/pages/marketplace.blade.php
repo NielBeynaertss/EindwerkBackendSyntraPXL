@@ -15,6 +15,9 @@
     .listing-card:hover {
         transform: scale(1.05); /* Apply scale transformation on hover */
     }
+    dialog{
+        width: 600px;
+    }
 </style>
 
 <div class="row justify-content-center mt-5">
