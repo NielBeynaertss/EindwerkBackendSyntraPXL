@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use app\Models\Member;
 
 
 class SettingsController extends Controller
@@ -13,6 +14,8 @@ class SettingsController extends Controller
         $member = Auth::guard('member')->user();
 
         if ($member && $member->approved) {
+
+            $members = Member::all();
             return view('auth.settings');
         }
 
