@@ -7,6 +7,7 @@
             <p>Description: {{ $listing->description }}</p>
             <p>Location: {{ $listing->location }}</p>
             <p>Sell / Loan?: {{ $listing->type_of_transaction }}</p>
+            <p>Created At: {{ $listing->created_at->format('d-m-y') }}</p>
         </div>
     </div>
 @endsection
