@@ -17,13 +17,13 @@ class ListingController extends Controller
         $member = Auth::guard('member')->user();
     
         if ($member && $member->approved) {
+
             $typeOfTransactions = TypeOfTransaction::all();
             $categories = Category::all();
             $listings = Listing::all(); // Assuming you have a Listing model
-            $favourites = json_decode($member->favourites, true) ?? [];
 
     
-            return view('pages.marketplace', compact('typeOfTransactions', 'categories', 'listings', 'favourites'));
+            return view('pages.marketplace', compact('typeOfTransactions', 'categories', 'listings'));
         }
     
         return redirect()->route('dashboard')->with('message', 'This page can only be accessed once your account has been approved');
@@ -52,22 +52,6 @@ class ListingController extends Controller
         return view('welcome');
     }
 
-    public function toggleFavorite($listingId)
-    {
-        $member = Auth::guard('member')->user();
-        $favourites = json_decode($member->favourites, true) ?? [];
-
-        if (in_array($listingId, $favourites)) {
-            $favourites = array_diff($favourites, [$listingId]);
-        } else {
-            $favourites[] = $listingId;
-        }
-
-        $member->favourites = json_encode($favourites);
-        $member->save();
-
-        return response()->json(['success' => true]);
-    }
 
 
 
