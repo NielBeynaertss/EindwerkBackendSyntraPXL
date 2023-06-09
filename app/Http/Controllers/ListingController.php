@@ -12,18 +12,18 @@ use App\Models\Listing;
 
 class ListingController extends Controller
 {
+
     public function showMarketplacePage()
     {
         $member = Auth::guard('member')->user();
     
         if ($member && $member->approved) {
 
-            $typeOfTransactions = TypeOfTransaction::all();
             $categories = Category::all();
             $listings = Listing::all(); // Assuming you have a Listing model
 
     
-            return view('pages.marketplace', compact('typeOfTransactions', 'categories', 'listings'));
+            return view('pages.marketplace', compact('categories', 'listings'));
         }
     
         return redirect()->route('dashboard')->with('message', 'This page can only be accessed once your account has been approved');
@@ -45,7 +45,7 @@ class ListingController extends Controller
             'location' => $request->location,
             'description' => $request->description,
             'category_id' => $request->category,
-            'type_of_transaction_id' => $request->typeOfTransaction,
+            'type_of_transaction' => $request->typeOfTransaction,
         ]);
 
 
@@ -53,6 +53,11 @@ class ListingController extends Controller
     }
 
 
+    public function show($id)
+    {
+        $listing = Listing::find($id);
+        return view('pages.listing-detail', compact('listing'));
+    }
 
 
 

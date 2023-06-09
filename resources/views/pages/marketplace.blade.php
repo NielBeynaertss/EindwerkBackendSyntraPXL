@@ -13,7 +13,7 @@
         transition: transform 0.3s; /* Add transition for smooth effect */
     }
     .listing-card:hover {
-        transform: scale(1.05); /* Apply scale transformation on hover */
+        transform: scale(1.07); /* Apply scale transformation on hover */
     }
     dialog{
         width: 600px;
@@ -46,9 +46,8 @@
                         </select><br><br>
                         
                         <select id="typeOfTransaction" name="typeOfTransaction" required>
-                            @foreach($typeOfTransactions as $type)
-                                <option value="{{ $type->id }}">{{ $type->name }}</option>
-                            @endforeach
+                            <option value="Loan">Loan</option>
+                            <option value="Sell">Sell</option>
                         </select><br><br>
                         
                         <input type="text" id="location" name="location" required><br><br>
@@ -65,39 +64,36 @@
             <h3>Listings</h3>
             <div class="row">
                 @foreach($listings as $listing)
-                    <div class="col-md-4 mb-3">
-                        <div class="card listing-card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <h5 class="card-title">{{ $listing->title }}</h5>
-                                    </div>
-                                    <div class="col d-flex justify-content-end">
-                                        <a href="#" class="favorite-icon">
-                                            <i class="favorite-icon fa-solid fa-star"></i>
-                                        </a>
-                                    </div>
+                    <div class="col-md-3 mb-3">
+                        <a href="{{ route('listingDetail', ['id' => $listing->id]) }}" class="text-decoration-none">
+                            <div class="card listing-card">
+                                <div class="card-body" style="height: 150px">
                                     <div class="row">
-                                        <div class="col">
-                                            <p class="card-text">{{ $listing->description }}</p>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="card-title">{{ $listing->title }}</h5>
+                                            </div>
+                                            <div class="col d-flex justify-content-end">
+                                                <a href="#" class="favorite-icon">
+                                                    <i class="favorite-icon fa-solid fa-star"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p class="card-text">{{ $listing->type_of_transaction }}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Add a button to trigger the dialog -->
-                                <button type="button" class="btn btn-primary" onclick="openDialog('{{ $listing->title }}', '{{ $listing->description }}')">View Details</button>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 @endforeach
             </div>
         </div>
         
-        <!-- Dialog -->
-        <dialog id="listingDetailsDiaglog">
-            <h2 id="listingDetailsDiaglogTitle"></h2>
-            <p id="listingDetailsDiaglogDescription"></p>
-            <button type="button" onclick="document.getElementById('listingDetailsDiaglog').close()">Cancel</button>
-        </dialog>
+        
         
 
     </div>    
