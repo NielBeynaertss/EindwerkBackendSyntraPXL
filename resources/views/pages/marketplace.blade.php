@@ -8,7 +8,12 @@
     }
     .favorite-icon.active {
         color: red; /* Color when active */
-
+    }
+    .listing-card {
+        transition: transform 0.3s; /* Add transition for smooth effect */
+    }
+    .listing-card:hover {
+        transform: scale(1.05); /* Apply scale transformation on hover */
     }
 </style>
 
@@ -58,7 +63,7 @@
             <div class="row">
                 @foreach($listings as $listing)
                     <div class="col-md-4 mb-3">
-                        <div class="card">
+                        <div class="card listing-card">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
