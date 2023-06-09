@@ -49,7 +49,7 @@
                         </select><br><br>
                         
                         <input type="text" id="location" name="location" required><br><br>
-                        <input type="text" id="description" name="description" required><br><br>
+                        <textarea type="text" id="description" name="description" required></textarea><br><br>
                     </div>
                 </div>
                 <button type="submit">Submit</button>
