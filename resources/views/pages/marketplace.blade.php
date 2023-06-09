@@ -20,9 +20,9 @@
 <div class="row justify-content-center mt-5">
     <div class="col-md-10">
         <h2 class="text-center">Marketplace</h2>
-        <button class="btn btn-primary" type="button" onclick="document.getElementById('listingModal').showModal()">Make Listing</button>
+        <button class="btn btn-primary" type="button" onclick="document.getElementById('createListingDialog').showModal()">Make Listing</button>
 
-        <dialog id="listingModal">
+        <dialog id="createListingDialog">
             <form action="{{ route('storeListing') }}" method="post">
                 @csrf
                 <div class="row">
@@ -53,7 +53,7 @@
                     </div>
                 </div>
                 <button type="submit">Submit</button>
-                <button type="button" onclick="document.getElementById('listingModal').close()">Cancel</button>
+                <button type="button" onclick="document.getElementById('createListingDialog').close()">Cancel</button>
             </form>
         </dialog>
 
@@ -80,28 +80,34 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- Add a button to trigger the dialog -->
+                                <button type="button" class="btn btn-primary" onclick="openDialog('{{ $listing->title }}', '{{ $listing->description }}')">View Details</button>
                             </div>
                         </div>
                     </div>
                 @endforeach
             </div>
         </div>
-
+        
+        <!-- Dialog -->
+        <dialog id="listingDetailsDiaglog">
+            <h2 id="listingDetailsDiaglogTitle"></h2>
+            <p id="listingDetailsDiaglogDescription"></p>
+            <button type="button" onclick="document.getElementById('listingDetailsDiaglog').close()">Cancel</button>
+        </dialog>
+        
 
     </div>    
 </div>
 
-
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(document).ready(function() {
-        $('.favorite-icon').click(function() {
-            $(this).toggleClass('active');
-        });
-    });
-
-
+    // Open the dialog and set the title and description
+    function openDialog(title, description) {
+        document.getElementById('listingDetailsDiaglogTitle').textContent = title;
+        document.getElementById('listingDetailsDiaglogDescription').textContent = description;
+        document.getElementById('listingDetailsDiaglog').showModal();
+    }
 </script>
+
 
 @endsection
