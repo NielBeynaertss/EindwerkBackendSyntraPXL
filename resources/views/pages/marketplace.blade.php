@@ -35,10 +35,10 @@
                         <i class="fa-solid fa-filter"></i> Filters
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="{{ route('marketplace', ['filter' => 'ascending']) }}">Alphabetical | ASC</a></li>
-                        <li><a class="dropdown-item" href="{{ route('marketplace', ['filter' => 'descending']) }}">Descending | DESC</a></li>
-                        <li><a class="dropdown-item" href="{{ route('marketplace', ['filter' => 'only_sell']) }}">Only sell</a></li>
-                        <li><a class="dropdown-item" href="{{ route('marketplace', ['filter' => 'only_loan']) }}">Only loan</a></li>
+                        <li><a class="dropdown-item" href="{{ route('marketplace', array_merge(request()->query(), ['filter' => 'ascending'])) }}">Alphabetical | ASC</a></li>
+                        <li><a class="dropdown-item" href="{{ route('marketplace', array_merge(request()->query(), ['filter' => 'descending'])) }}">Alphabetical | DESC</a></li>
+                        <li><a class="dropdown-item" href="{{ route('marketplace', array_merge(request()->query(), ['filter' => 'only_sell'])) }}">Only sell</a></li>
+                        <li><a class="dropdown-item" href="{{ route('marketplace', array_merge(request()->query(), ['filter' => 'only_loan'])) }}">Only loan</a></li>                        
                     </ul>   
                     <a href="{{ route('clearFilters') }}">Clear Filters</a>                
                 </div>
@@ -148,7 +148,7 @@
         <div class="row mt-3">
             <div class="col-md-12">
                 <!-- Display pagination links -->
-                {{ $listings->links() }}
+                {{ $listings->appends(request()->query())->links() }}
             </div>
         </div>
         
