@@ -121,14 +121,6 @@
     </div>    
 </div>
 
-<script>
-    // Open the dialog and set the title and description
-    function openDialog(title, description) {
-        document.getElementById('listingDetailsDiaglogTitle').textContent = title;
-        document.getElementById('listingDetailsDiaglogDescription').textContent = description;
-        document.getElementById('listingDetailsDiaglog').showModal();
-    }
-</script>
 
 
 @endsection
