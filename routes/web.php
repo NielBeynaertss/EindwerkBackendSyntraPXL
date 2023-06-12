@@ -41,3 +41,5 @@ Route::get('/marketplace', [ListingController::class, 'showMarketplacePage'])->n
 Route::post('/storeListing', [ListingController::class, 'storeListing'])->name('storeListing');
 
 Route::get('/listing/{id}', [ListingController::class, 'showListingDetails'])->name('listingDetail');
+
+Route::post('/add-to-favorites', [ListingController::class, 'addToFavorites'])->name('addToFavorites');

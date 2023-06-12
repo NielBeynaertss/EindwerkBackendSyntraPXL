@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Member;
 use Illuminate\Support\Facades\Auth;
 use App\Models\TypeOfTransaction;
 use Illuminate\Support\Facades\DB;
@@ -20,7 +21,7 @@ class ListingController extends Controller
         
         if ($member && $member->approved) {
             $categories = Category::all();
-            $listings = Listing::paginate(12); // Use paginate() method to retrieve only 8 listings
+            $listings = Listing::paginate(9); // Use paginate() method to retrieve only 8 listings
 
             Paginator::useBootstrap(); // Use Bootstrap styling for the pagination links
 
@@ -51,7 +52,8 @@ class ListingController extends Controller
         ]);
 
 
-        return view('welcome');
+        // Redirect back to the current listing page
+        return redirect()->back();
     }
 
 
@@ -60,6 +62,39 @@ class ListingController extends Controller
         $listing = Listing::find($id);
         return view('pages.listing-detail', compact('listing'));
     }
+
+    public function addToFavorites(Request $request)
+    {
+        $member = Auth::guard('member')->user();
+        $listingId = $request->input('listingId');
+    
+        // Retrieve the member's current favorite listings
+        $favoriteListings = $member->favourite_listings ? json_decode($member->favourite_listings, true) : [];
+    
+        // Convert the existing string value to an array if it's not already
+        if (!is_array($favoriteListings)) {
+            $favoriteListings = [$favoriteListings];
+        }
+    
+        // Add or remove the listing ID from the favorites array based on its presence
+        if (in_array($listingId, $favoriteListings)) {
+            // Remove the listing ID from favorites
+            $favoriteListings = array_diff($favoriteListings, [$listingId]);
+        } else {
+            // Add the listing ID to favorites
+            $favoriteListings[] = $listingId;
+        }
+    
+        // Update the member's favorite listings in the database
+        $member->favourite_listings = json_encode($favoriteListings);
+        $member->save();
+    
+        // Redirect back to the current listing page
+        return redirect()->back();
+    }
+    
+    
+
 
 
 
