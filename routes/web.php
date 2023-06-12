@@ -40,4 +40,4 @@ Route::get('/settings', [SettingsController::class, 'showSettingsPage'])->name('
 Route::get('/marketplace', [ListingController::class, 'showMarketplacePage'])->name('marketplace');
 Route::post('/storeListing', [ListingController::class, 'storeListing'])->name('storeListing');
 
-Route::get('/listing/{id}', [ListingController::class, 'show'])->name('listingDetail');
+Route::get('/listing/{id}', [ListingController::class, 'showListingDetails'])->name('listingDetail');
