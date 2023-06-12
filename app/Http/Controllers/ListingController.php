@@ -15,21 +15,47 @@ use Illuminate\Pagination\Paginator;
 class ListingController extends Controller
 {
 
-    public function showMarketplacePage()
+    public function showMarketplacePage(Request $request)
     {
         $member = Auth::guard('member')->user();
-        
+
         if ($member && $member->approved) {
             $categories = Category::all();
-            $listings = Listing::paginate(9); // Use paginate() method to retrieve only 8 listings
+            $query = Listing::query();
+
+            // Check if the 'alphabetical ascending' filter is selected
+            if ($request->filter === 'ascending') {
+                $query->orderBy('title', 'asc');
+            }
+            // Check if the 'alphabetical descending' filter is selected
+            if ($request->filter === 'descending') {
+                $query->orderBy('title', 'desc');
+            }
+            // Check if the 'only sell' filter is selected
+            if ($request->filter === 'only_sell') {
+                $query->where('type_of_transaction', 'sell');
+            }
+            // Check if the 'only loan' filter is selected
+            if ($request->filter === 'only_loan') {
+                $query->where('type_of_transaction', 'loan');
+            }
+
+            $listings = $query->paginate(6);
 
             Paginator::useBootstrap(); // Use Bootstrap styling for the pagination links
 
             return view('pages.marketplace', compact('categories', 'listings'));
         }
-        
+
         return redirect()->route('dashboard')->with('message', 'This page can only be accessed once your account has been approved');
     }
+    public function clearFilters()
+    {
+        return redirect()->route('marketplace');
+    }
+
+
+    
    
 
     
@@ -44,7 +70,7 @@ class ListingController extends Controller
         ]);
 
         Listing::create([
-            'title' => $request->title,
+            'title' => strtoupper($request->title),
             'location' => $request->location,
             'description' => $request->description,
             'category' => $request->category,
@@ -67,15 +93,15 @@ class ListingController extends Controller
     {
         $member = Auth::guard('member')->user();
         $listingId = $request->input('listingId');
-    
+
         // Retrieve the member's current favorite listings
         $favoriteListings = $member->favourite_listings ? json_decode($member->favourite_listings, true) : [];
-    
+
         // Convert the existing string value to an array if it's not already
         if (!is_array($favoriteListings)) {
             $favoriteListings = [$favoriteListings];
         }
-    
+
         // Add or remove the listing ID from the favorites array based on its presence
         if (in_array($listingId, $favoriteListings)) {
             // Remove the listing ID from favorites
@@ -84,21 +110,13 @@ class ListingController extends Controller
             // Add the listing ID to favorites
             $favoriteListings[] = $listingId;
         }
-    
+
         // Update the member's favorite listings in the database
         $member->favourite_listings = json_encode($favoriteListings);
         $member->save();
-    
+
         // Redirect back to the current listing page
         return redirect()->back();
     }
-    
-    
-
-
-
-
-
-
 
 }

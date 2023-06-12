@@ -27,7 +27,7 @@
         <div class="row">
             <h2 class="text-center">Marketplace</h2>
         </div>
-
+        <hr>
         <div class="row mt-5">
             <div class="col d-flex justify-content-end">
                 <div class="dropdown">
@@ -35,17 +35,19 @@
                         <i class="fa-solid fa-filter"></i> Filters
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><a class="dropdown-item" href="#">Alphabetical</a></li>
-                      <li><a class="dropdown-item" href="#">Only sell</a></li>
-                      <li><a class="dropdown-item" href="#">Only loan</a></li>
-                    </ul>
+                        <li><a class="dropdown-item" href="{{ route('marketplace', ['filter' => 'ascending']) }}">Alphabetical | ASC</a></li>
+                        <li><a class="dropdown-item" href="{{ route('marketplace', ['filter' => 'descending']) }}">Descending | DESC</a></li>
+                        <li><a class="dropdown-item" href="{{ route('marketplace', ['filter' => 'only_sell']) }}">Only sell</a></li>
+                        <li><a class="dropdown-item" href="{{ route('marketplace', ['filter' => 'only_loan']) }}">Only loan</a></li>
+                    </ul>   
+                    <a href="{{ route('clearFilters') }}">Clear Filters</a>                
                 </div>
                 <div class="col-2 d-flex justify-content-end ml-2">
                     <button class="btn btn-primary" type="button" onclick="document.getElementById('createListingDialog').showModal()">Make Listing</button>
                 </div>
             </div>
-
         </div>
+        
 
         <!--Create listing popup-->
         <dialog id="createListingDialog">

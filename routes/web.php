@@ -43,3 +43,4 @@ Route::post('/storeListing', [ListingController::class, 'storeListing'])->name('
 Route::get('/listing/{id}', [ListingController::class, 'showListingDetails'])->name('listingDetail');
 
 Route::post('/add-to-favorites', [ListingController::class, 'addToFavorites'])->name('addToFavorites');
+Route::get('/marketplace/clear', [ListingController::class, 'clearFilters'])->name('clearFilters');
