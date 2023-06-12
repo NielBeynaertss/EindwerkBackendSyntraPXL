@@ -13,7 +13,7 @@
             <div class="card-header">
                 <div class="row ">
                     <div class="col">
-                        <p>User Information</p>
+                        <p class="mt-3">User Information</p>
                     </div>
                     <div class="col d-flex justify-content-end">
                         <button type="button" onclick="document.getElementById('changeCredentialsDialog').showModal()">Show info</button>
@@ -25,37 +25,87 @@
 
         <dialog id="changeCredentialsDialog">
 
-
             <div class="row">
-                <div class="col-3">
-                    <p><b>Achternaam:</b></p>
-                    <p><b>Voornaam:</b></p>
-                    <p><b>Email adress</b></p>
-                    <p><b>GSM</b></p>
-                    <p><b>Straat + nummer</b></p>
-                    <p><b>Stad / gemeente</b></p>
-                    <p><b>Wachtwoord</b></p>
-                </div>
                 <div class="col">
-                    <p>{{ Auth::guard('member')->user()->lastname}}</p>
-                    <p>{{ Auth::guard('member')->user()->firstname}}</p>
-                    <p>{{ Auth::guard('member')->user()->email}}</p>
-                    <p>{{ Auth::guard('member')->user()->phone}}</p>
-                    <p>{{ Auth::guard('member')->user()->streetnr}}</p>
-                    <p>{{ Auth::guard('member')->user()->city}}</p>
-                    <p>********</p>
-                </div>
-                <div class="col">
-                    <p><a onclick="document.getElementById('changeCredentialsDialog').showModal()"><i class="fa-solid fa-pen-to-square"></i></a></p>
-                    <p><a onclick="document.getElementById('changeCredentialsDialog').showModal()"><i class="fa-solid fa-pen-to-square"></i></a></p>
-                    <p><a onclick="document.getElementById('changeCredentialsDialog').showModal()"><i class="fa-solid fa-pen-to-square"></i></a></p>
-                    <p><a onclick="document.getElementById('changeCredentialsDialog').showModal()"><i class="fa-solid fa-pen-to-square"></i></a></p>
-                    <p><a onclick="document.getElementById('changeCredentialsDialog').showModal()"><i class="fa-solid fa-pen-to-square"></i></a></p>
-                    <p><a onclick="document.getElementById('changeCredentialsDialog').showModal()"><i class="fa-solid fa-pen-to-square"></i></a></p>
-                    <p><a onclick="document.getElementById('changeCredentialsDialog').showModal()"><i class="fa-solid fa-pen-to-square"></i></a></p>
+                    <div class="row">
+                        <div class="col-md">
+                            <p><b>Achternaam:</b></p>
+                        </div>
+                        <div class="col">
+                            <p>{{ Auth::guard('member')->user()->lastname}}</p>
+                        </div>
+                        <div class="col">
+                            <p><a onclick="document.getElementById('changeCredentialsDialog').showModal()"><i class="fa-solid fa-pen-to-square"></i></a></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md">
+                            <p><b>Voornaam:</b></p>
+                        </div>
+                        <div class="col">
+                            <p>{{ Auth::guard('member')->user()->firstname}}</p>
+                        </div>
+                        <div class="col">
+                            <p><a onclick="document.getElementById('changeCredentialsDialog').showModal()"><i class="fa-solid fa-pen-to-square"></i></a></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md">
+                            <p><b>Email adress</b></p>
+                        </div>
+                        <div class="col">
+                            <p>{{ Auth::guard('member')->user()->email}}</p>
+                        </div>
+                        <div class="col">
+                            <p><a onclick="document.getElementById('changeCredentialsDialog').showModal()"><i class="fa-solid fa-pen-to-square"></i></a></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md">
+                            <p><b>GSM</b></p>
+                        </div>
+                        <div class="col">
+                            <p>{{ Auth::guard('member')->user()->phone}}</p>
+                        </div>
+                        <div class="col">
+                            <p><a onclick="document.getElementById('changeCredentialsDialog').showModal()"><i class="fa-solid fa-pen-to-square"></i></a></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md">
+                            <p><b>Straat + nummer</b></p>
+                        </div>
+                        <div class="col">
+                            <p>{{ Auth::guard('member')->user()->streetnr}}</p>
+                        </div>
+                        <div class="col">
+                            <p><a onclick="document.getElementById('changeCredentialsDialog').showModal()"><i class="fa-solid fa-pen-to-square"></i></a></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md">
+                            <p><b>Stad / gemeente</b></p>
+                        </div>
+                        <div class="col">
+                            <p>{{ Auth::guard('member')->user()->city}}</p>
+                        </div>
+                        <div class="col">
+                            <p><a onclick="document.getElementById('changeCredentialsDialog').showModal()"><i class="fa-solid fa-pen-to-square"></i></a></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md">
+                            <p><b>Wachtwoord</b></p>
+                        </div>
+                        <div class="col">
+                            <p>********</p>
+                        </div>
+                        <div class="col">
+                            <p><a onclick="document.getElementById('changeCredentialsDialog').showModal()"><i class="fa-solid fa-pen-to-square"></i></a></p>
+                        </div>
+                    </div>
                 </div>
             </div>
-
             <button type="button" onclick="document.getElementById('changeCredentialsDialog').close()">Cancel</button>
 
         </dialog>
