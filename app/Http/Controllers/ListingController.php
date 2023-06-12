@@ -46,7 +46,7 @@ class ListingController extends Controller
             'title' => $request->title,
             'location' => $request->location,
             'description' => $request->description,
-            'category_id' => $request->category,
+            'category' => $request->category,
             'type_of_transaction' => $request->typeOfTransaction,
         ]);
 
@@ -55,11 +55,13 @@ class ListingController extends Controller
     }
 
 
-    public function show($id)
+    public function showListingDetails($id)
     {
         $listing = Listing::find($id);
         return view('pages.listing-detail', compact('listing'));
     }
+
+
 
 
 
