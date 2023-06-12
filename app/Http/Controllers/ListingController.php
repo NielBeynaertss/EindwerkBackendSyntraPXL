@@ -40,7 +40,7 @@ class ListingController extends Controller
                 $query->where('type_of_transaction', 'loan');
             }
 
-            $listings = $query->paginate(6);
+            $listings = $query->paginate(6); 
 
             Paginator::useBootstrap(); // Use Bootstrap styling for the pagination links
 
