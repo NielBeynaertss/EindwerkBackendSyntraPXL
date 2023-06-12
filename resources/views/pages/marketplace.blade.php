@@ -2,11 +2,11 @@
 
 @section('content')
 <style>
-    .favorite-icon {
+    #favoriteIcon {
         color: #888; /* Default color */
         cursor: pointer;
     }
-    .favorite-icon.active {
+    #favoriteIcon.active {
         color: red; /* Color when active */
     }
     .listing-card {
@@ -63,11 +63,43 @@
                         <input type="text" id="title" name="title" required><br><br>
                         
                         <select id="category" name="category" required>
-                            @foreach($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                            @endforeach
+                            <option value="Antiek en Kunst">Antiek en Kunst</option>
+                            <option value="Audio, Tv en Foto">Audio, Tv en Foto</option>
+                            <option value="Auto diversen">Auto diversen</option>
+                            <option value="Auto's">Auto's</option>
+                            <option value="Auto-onderdelen">Auto-onderdelen</option>
+                            <option value="Boeken">Boeken</option>
+                            <option value="Caravans en Kamperen">Caravans en Kamperen</option>
+                            <option value="Cd's en Dvd's">Cd's en Dvd's</option>
+                            <option value="Computers en Software">Computers en Software</option>
+                            <option value="Contacten en Berichten">Contacten en Berichten</option>
+                            <option value="Diensten en Vakmensen">Diensten en Vakmensen</option>
+                            <option value="Dieren en Toebehoren">Dieren en Toebehoren</option>
+                            <option value="Doe-het-zelf en Bouw">Doe-het-zelf en Bouw</option>
+                            <option value="Elektronische apparatuur">Elektronische apparatuur</option>
+                            <option value="Fietsen en Brommers">Fietsen en Brommers</option>
+                            <option value="Games en Spelcomputers">Games en Spelcomputers</option>
+                            <option value="Handtassen en Accessoires">Handtassen en Accessoires</option>
+                            <option value="Hobby en Vrije tijd">Hobby en Vrije tijd</option>
+                            <option value="Huis en Inrichting">Huis en Inrichting</option>
+                            <option value="Immo">Immo</option>
+                            <option value="Kinderen en Baby's">Kinderen en Baby's</option>
+                            <option value="Kleding | Dames">Kleding | Dames</option>
+                            <option value="Kleding | Heren">Kleding | Heren</option>
+                            <option value="Motoren">Motoren</option>
+                            <option value="Muziek en Instrumenten">Muziek en Instrumenten</option>
+                            <option value="Postzegels en Munten">Postzegels en Munten</option>
+                            <option value="Sport en Fitness">Sport en Fitness</option>
+                            <option value="Telecommunicatie">Telecommunicatie</option>
+                            <option value="Tickets en Kaartjes">Tickets en Kaartjes</option>
+                            <option value="Tuin en Terras">Tuin en Terras</option>
+                            <option value="Vacatures">Vacatures</option>
+                            <option value="Vakantie">Vakantie</option>
+                            <option value="Verzamelen">Verzamelen</option>
+                            <option value="Watersport en Boten">Watersport en Boten</option>
+                            <option value="Zakelijke goederen">Zakelijke goederen</option>
                         </select><br><br>
-                        
+                          
                         <select id="typeOfTransaction" name="typeOfTransaction" required>
                             <option value="Loan">Loan</option>
                             <option value="Sell">Sell</option>
@@ -87,16 +119,16 @@
                 <div class="col-lg-4 mb-3">
                     <a href="{{ route('listingDetail', ['id' => $listing->id]) }}" class="text-decoration-none">
                         <div class="card listing-card">
-                            <div class="card-body" style="height: 150px">
-                                <div class="row">
+                            <div class="card-body row" style="height: 150px">
+                                <div class="col">
                                     <div class="row">
                                         <div class="col">
                                             <h5 class="card-title">{{ $listing->title }}</h5>
                                         </div>
-                                        <div class="col d-flex justify-content-end">
-                                            <a href="#" class="favorite-icon">
-                                                <i class="favorite-icon fa-solid fa-star"></i>
-                                            </a>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="card-text">{{ $listing->category }}</p>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -120,6 +152,8 @@
         
     </div>    
 </div>
+
+
 
 
 

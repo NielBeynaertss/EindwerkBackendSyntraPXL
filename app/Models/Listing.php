@@ -13,7 +13,7 @@ class Listing extends Model
         'title',
         'location',
         'description',
-        'category_id',
+        'category',
         'type_of_transaction',
     ];
 }
