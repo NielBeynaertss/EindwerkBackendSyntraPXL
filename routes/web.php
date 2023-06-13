@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginRegisterController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\EventController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,17 +28,26 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::controller(LoginRegisterController::class)->group(function() {
     Route::get('/register', 'register')->name('register');
-    Route::post('/storeNewMember', 'storeNewMember')->name('storeNewMember');
-    Route::get('/login', 'login')->name('login');
-    Route::post('/authenticate', 'authenticate')->name('authenticate');
     Route::get('/dashboard', 'dashboard')->name('dashboard');
+    Route::get('/login', 'login')->name('login');
+
+    Route::post('/storeNewMember', 'storeNewMember')->name('storeNewMember');
+    Route::post('/authenticate', 'authenticate')->name('authenticate');
     Route::post('/logout', 'logout')->name('logout');
 });
+
+Route::controller(ListingController::class)->group(function() {
+    Route::get('/marketplace', 'showMarketplacePage')->name('marketplace');
+    Route::get('/listing/{id}', 'showListingDetails')->name('listingDetail');
+    Route::get('/marketplace/clear', 'clearFilters')->name('clearFilters');
+    Route::post('/storeListing', 'storeListing')->name('storeListing');
+    Route::post('/add-to-favorites', 'addToFavorites')->name('addToFavorites');
+});
+
 
 
 Route::get('/settings', [SettingsController::class, 'showSettingsPage'])->name('settings');
 
-
-Route::get('/marketplace', [ListingController::class, 'showMarketplacePage'])->name('marketplace');
-Route::post('/store', [ListingController::class, 'storeListing'])->name('storeListing');
-
+Route::get('/events', [EventController::class, 'showEventsPage'])->name('events');
+Route::post('/storeEvent', [EventController::class, 'storeEvent'])->name('storeEvent');
+Route::get('/event/{id}', [EventController::class, 'showEventDetails'])->name('eventDetail');
