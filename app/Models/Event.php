@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'location',
+        'date',
+        'starttime',
+        'endtime',
+        'fee',
+        'description',
+        'created_by',
+        'approved'
+    ];
 }
