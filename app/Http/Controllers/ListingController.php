@@ -75,6 +75,7 @@ class ListingController extends Controller
             'description' => $request->description,
             'category' => $request->category,
             'type_of_transaction' => $request->typeOfTransaction,
+            'created_by' => Auth::guard('member')->user()->lastname .' '. Auth::guard('member')->user()->firstname
         ]);
 
 

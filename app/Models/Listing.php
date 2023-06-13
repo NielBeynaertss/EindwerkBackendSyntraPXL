@@ -15,5 +15,6 @@ class Listing extends Model
         'description',
         'category',
         'type_of_transaction',
+        'created_by'
     ];
 }
