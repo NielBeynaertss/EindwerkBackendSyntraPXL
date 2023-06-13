@@ -9,6 +9,8 @@ use App\Models\Event;
 
 class EventController extends Controller
 {
+
+    
     public function showEventsPage()
     {
         $member = Auth::guard('member')->user();
@@ -20,8 +22,6 @@ class EventController extends Controller
     
         return redirect()->route('dashboard')->with('message', 'This page can only be accessed once your account has been approved.');
     }
-    
-    
 
     public function storeEvent(Request $request)
     {
@@ -67,4 +67,7 @@ class EventController extends Controller
         $event = Event::find($id);
         return view('pages.event-detail', compact('event'));
     }
+    
+
+
 }
