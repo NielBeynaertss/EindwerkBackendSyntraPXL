@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginRegisterController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\EventController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -44,3 +46,6 @@ Route::get('/listing/{id}', [ListingController::class, 'showListingDetails'])->n
 
 Route::post('/add-to-favorites', [ListingController::class, 'addToFavorites'])->name('addToFavorites');
 Route::get('/marketplace/clear', [ListingController::class, 'clearFilters'])->name('clearFilters');
+
+
+Route::get('/events', [EventController::class, 'showEventsPage'])->name('showEventsPage');
