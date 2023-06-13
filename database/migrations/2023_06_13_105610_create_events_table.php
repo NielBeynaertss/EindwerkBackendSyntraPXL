@@ -23,6 +23,7 @@ class CreateEventsTable extends Migration
             $table->decimal('fee', 8, 2);
             $table->text('description');
             $table->string('created_by');
+            $table->boolean('approved')->default(false); // New 'approved' column
             $table->timestamps();
         });
     }
