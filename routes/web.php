@@ -35,17 +35,16 @@ Route::controller(LoginRegisterController::class)->group(function() {
     Route::post('/logout', 'logout')->name('logout');
 });
 
+Route::controller(ListingController::class)->group(function() {
+    Route::get('/marketplace', 'showMarketplacePage')->name('marketplace');
+    Route::post('/storeListing', 'storeListing')->name('storeListing');
+    Route::get('/listing/{id}', 'showListingDetails')->name('listingDetail');
+    Route::post('/add-to-favorites', 'addToFavorites')->name('addToFavorites');
+    Route::get('/marketplace/clear', 'clearFilters')->name('clearFilters');
+});
+
+
 
 Route::get('/settings', [SettingsController::class, 'showSettingsPage'])->name('settings');
-
-
-Route::get('/marketplace', [ListingController::class, 'showMarketplacePage'])->name('marketplace');
-Route::post('/storeListing', [ListingController::class, 'storeListing'])->name('storeListing');
-
-Route::get('/listing/{id}', [ListingController::class, 'showListingDetails'])->name('listingDetail');
-
-Route::post('/add-to-favorites', [ListingController::class, 'addToFavorites'])->name('addToFavorites');
-Route::get('/marketplace/clear', [ListingController::class, 'clearFilters'])->name('clearFilters');
-
 
 Route::get('/events', [EventController::class, 'showEventsPage'])->name('showEventsPage');
