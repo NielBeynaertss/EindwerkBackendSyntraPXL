@@ -24,6 +24,7 @@ class CreateEventsTable extends Migration
             $table->text('description');
             $table->string('created_by');
             $table->boolean('approved')->default(false); // New 'approved' column
+            $table->string('picture')->nullable();
             $table->timestamps();
         });
     }

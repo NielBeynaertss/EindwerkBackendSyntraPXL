@@ -18,6 +18,7 @@ class Event extends Model
         'fee',
         'description',
         'created_by',
-        'approved'
+        'approved',
+        'picture'
     ];
 }

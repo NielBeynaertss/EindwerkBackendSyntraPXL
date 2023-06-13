@@ -9,6 +9,11 @@
                 </div>
                 <hr>
             </div>
+            <div class="row text-center">
+                <div class="col text-center">
+                    <img src="{{ asset('event-images/' . $event->picture) }}" alt="Event Image" style="width: 400px; height: auto;">
+                </div>
+            </div>
             <p>Description: {{ $event->description }}</p>
             <p>Location: {{ $event->location }}</p>
             <p>Fee?: {{ $event->fee }}</p>
