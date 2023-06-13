@@ -21,7 +21,7 @@
                     @if (Auth::guard('member')->check())
                         <!-- Authenticated navbar links -->
                         <li class="nav-item"><a class="nav-link" href="{{ route('marketplace') }}">Marketplace</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('events') }}">Events</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Forum</a></li>
 
                         <li class="nav-item dropdown">
