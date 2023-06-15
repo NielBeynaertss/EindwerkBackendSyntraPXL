@@ -3,7 +3,7 @@
 @section('content')
 <style>
     dialog{
-        width: 700px;
+        width: 800px;
     }
     .profile_button{
         padding: 0;
@@ -74,6 +74,7 @@
                 
             </div>
         </div>
+        
 
         <dialog id="changeCredentialsDialog">
 
@@ -87,7 +88,7 @@
                             <p>{{ Auth::guard('member')->user()->lastname}}</p>
                         </div>
                         <div class="col">
-                            <p><a onclick="document.getElementById('changeCredentialsDialog').showModal()"><i class="fa-solid fa-pen-to-square"></i></a></p>
+                            <p><a onclick="document.getElementById('changeAchternaamDialog').showModal(); document.getElementById('changeCredentialsDialog').close()"><i class="fa-solid fa-pen-to-square"></i></a></p>
                         </div>
                     </div>
                     <div class="row">
@@ -98,7 +99,7 @@
                             <p>{{ Auth::guard('member')->user()->firstname}}</p>
                         </div>
                         <div class="col">
-                            <p><a onclick="document.getElementById('changeCredentialsDialog').showModal()"><i class="fa-solid fa-pen-to-square"></i></a></p>
+                            <p><a onclick="document.getElementById('changeVoornaamDialog').showModal(); document.getElementById('changeCredentialsDialog').close()"><i class="fa-solid fa-pen-to-square"></i></a></p>
                         </div>
                     </div>
                     <div class="row">
@@ -109,7 +110,7 @@
                             <p>{{ Auth::guard('member')->user()->email}}</p>
                         </div>
                         <div class="col">
-                            <p><a onclick="document.getElementById('changeCredentialsDialog').showModal()"><i class="fa-solid fa-pen-to-square"></i></a></p>
+                            <p><a onclick="document.getElementById('changeEmailDialog').showModal(); document.getElementById('changeCredentialsDialog').close()"><i class="fa-solid fa-pen-to-square"></i></a></p>
                         </div>
                     </div>
                     <div class="row">
@@ -120,7 +121,7 @@
                             <p>{{ Auth::guard('member')->user()->phone}}</p>
                         </div>
                         <div class="col">
-                            <p><a onclick="document.getElementById('changeCredentialsDialog').showModal()"><i class="fa-solid fa-pen-to-square"></i></a></p>
+                            <p><a onclick="document.getElementById('changePhoneDialog').showModal(); document.getElementById('changeCredentialsDialog').close()""><i class="fa-solid fa-pen-to-square"></i></a></p>
                         </div>
                     </div>
                     <div class="row">
@@ -131,7 +132,7 @@
                             <p>{{ Auth::guard('member')->user()->streetnr}}</p>
                         </div>
                         <div class="col">
-                            <p><a onclick="document.getElementById('changeCredentialsDialog').showModal()"><i class="fa-solid fa-pen-to-square"></i></a></p>
+                            <p><a onclick="document.getElementById('changeStreetnrDialog').showModal(); document.getElementById('changeCredentialsDialog').close()""><i class="fa-solid fa-pen-to-square"></i></a></p>
                         </div>
                     </div>
                     <div class="row">
@@ -142,7 +143,7 @@
                             <p>{{ Auth::guard('member')->user()->city}}</p>
                         </div>
                         <div class="col">
-                            <p><a onclick="document.getElementById('changeCredentialsDialog').showModal()"><i class="fa-solid fa-pen-to-square"></i></a></p>
+                            <p><a onclick="document.getElementById('changeCityDialog').showModal(); document.getElementById('changeCredentialsDialog').close()""><i class="fa-solid fa-pen-to-square"></i></a></p>
                         </div>
                     </div>
                     <div class="row">
@@ -153,7 +154,7 @@
                             <p>********</p>
                         </div>
                         <div class="col">
-                            <p><a onclick="document.getElementById('changeCredentialsDialog').showModal()"><i class="fa-solid fa-pen-to-square"></i></a></p>
+                            <p><a onclick="document.getElementById('changePasswordDialog').showModal(); document.getElementById('changeCredentialsDialog').close()""><i class="fa-solid fa-pen-to-square"></i></a></p>
                         </div>
                     </div>
                 </div>
@@ -161,6 +162,84 @@
             <button type="button" onclick="document.getElementById('changeCredentialsDialog').close()">Cancel</button>
 
         </dialog>
+
+
+        <!--Edit credentials dialogs-->
+        <div>
+            <dialog id="changeAchternaamDialog">
+                <form action="{{ route('updateCredentials', ['id' => 'lastname']) }}" method="post">
+                    @csrf
+                    <label for="lastname">Nieuwe achternaam</label>
+                    <input type="text" id="lastname" name="lastname">
+                    <button type="submit">Submit</button>
+                    <button type="button" onclick="document.getElementById('changeAchternaamDialog').close()">Cancel</button>
+                </form>
+            </dialog>
+            
+            <dialog id="changeVoornaamDialog">
+                <form action="{{ route('updateCredentials', ['id' => 'firstname']) }}" method="post">
+                    @csrf
+                    <label for="firstname">Nieuwe voornaam</label>
+                    <input type="text" id="firstname" name="firstname">
+                    <button type="submit">Submit</button>
+                    <button type="button" onclick="document.getElementById('changeVoornaamDialog').close()">Cancel</button>
+                </form>                
+            </dialog>
+
+            <dialog id="changeEmailDialog">
+                <form action="{{ route('updateCredentials', ['id' => 'email']) }}" method="post">
+                    @csrf
+                    <label for="email">Nieuwe email</label>
+                    <input type="text" id="email" name="email">
+                    <button type="submit">Submit</button>
+                    <button type="button" onclick="document.getElementById('changeEmailDialog').close()">Cancel</button>
+                </form>                 
+            </dialog>
+
+            <dialog id="changePhoneDialog">
+                <form action="{{ route('updateCredentials', ['id' => 'phone']) }}" method="post">
+                    @csrf
+                    <label for="phone">Nieuw GSM nummer:</label>
+                    <input type="text" id="phone" name="phone">
+                    <button type="submit">Submit</button>
+                    <button type="button" onclick="document.getElementById('changePhoneDialog').close()">Cancel</button>
+                </form>                
+            </dialog>
+
+            <dialog id="changeStreetnrDialog">
+                <form action="{{ route('updateCredentials', ['id' => 'streetnr']) }}" method="post">
+                    @csrf
+                    <label for="streetnr">Nieuwe straat + nr: </label>
+                    <input type="text" id="streetnr" name="streetnr">
+                    <button type="submit">Submit</button>
+                    <button type="button" onclick="document.getElementById('changeStreetnrDialog').close()">Cancel</button>
+                </form>                
+            </dialog>
+
+            <dialog id="changeCityDialog">
+                <form action="{{ route('updateCredentials', ['id' => 'city']) }}" method="post">
+                    @csrf
+                    <label for="city">Nieuwe stad / gemeente: </label>
+                    <input type="text" id="city" name="city">
+                    <button type="submit">Submit</button>
+                    <button type="button" onclick="document.getElementById('changeCityDialog').close()">Cancel</button>
+                </form>                 
+            </dialog>
+
+            <dialog id="changePasswordDialog">
+                <form action="{{ route('updateCredentials', ['id' => 'password']) }}" method="post">
+                    @csrf
+                    <label for="password">Nieuw paswoord: </label>
+                    <input type="password" id="password" name="password"><br><br>
+
+                    <label for="password">Bevestig paswoord: </label>
+                    <input type="password" id="password_confirmation" name="password_confirmation"><br><br>
+
+                    <button type="submit">Submit</button>
+                    <button type="button" onclick="document.getElementById('changePasswordDialog').close()">Cancel</button>
+                </form>                 
+            </dialog>
+        </div>
 
     </div>    
 </div>
