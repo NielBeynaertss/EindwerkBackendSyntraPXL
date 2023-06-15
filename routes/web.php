@@ -44,11 +44,16 @@ Route::controller(ListingController::class)->group(function() {
     Route::post('/add-to-favorites', 'addToFavorites')->name('addToFavorites');
 });
 
+Route::controller(SettingsController::class)->group(function() {
+    Route::get('/settings', 'showSettingsPage')->name('settings');
 
-Route::post('/updateProfilePicture', [SettingsController::class, 'updateProfilePicture'])->name('updateProfilePicture');
-Route::get('/settings', [SettingsController::class, 'showSettingsPage'])->name('settings');
-Route::post('/updateCredentials/{id}', [SettingsController::class, 'updateCredentials'])->name('updateCredentials');
+    Route::post('/updateProfilePicture', 'updateProfilePicture')->name('updateProfilePicture');
+    Route::post('/updateCredentials/{id}', 'updateCredentials')->name('updateCredentials');
+});
 
-Route::get('/events', [EventController::class, 'showEventsPage'])->name('events');
-Route::post('/storeEvent', [EventController::class, 'storeEvent'])->name('storeEvent');
-Route::get('/event/{id}', [EventController::class, 'showEventDetails'])->name('eventDetail');
+Route::controller(EventController::class)->group(function() {
+    Route::get('/events', 'showEventsPage')->name('events');
+    Route::get('/event/{id}', 'showEventDetails')->name('eventDetail');
+
+    Route::post('/storeEvent', 'storeEvent')->name('storeEvent');
+});
