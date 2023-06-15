@@ -5,27 +5,62 @@
     dialog{
         width: 700px;
     }
+    .profile_button{
+        padding: 0;
+    }
+    .profile_button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .profile_button:hover {
+        background-color: #f5f5f5;
+    }
+
+    .profile_button_text {
+        display: none;
+        color: gray;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    .profile_button:hover .profile_button_text {
+        display: block;
+    }
+
+
 </style>
 
 <div class="row justify-content-center mt-5">
     <div class="col-md-10">
                 
-        <div class="border">
+        <div class="text-center">
             @if (Auth::guard('member')->user()->profile_picture)
-                <img src="{{ asset('profile-images/' . Auth::guard('member')->user()->profile_picture) }}" alt="Profile Picture" height="400px;">
+                <button type="button" onclick="document.getElementById('profilePictureDialog').showModal()" class="profile_button">
+                    <img src="{{ asset('profile-images/' . Auth::guard('member')->user()->profile_picture) }}" alt="Profile Picture" height="400px;">
+                    <span class="profile_button_text">Click to add/change profile picture</span>
+                </button>
             @else
-                <p>No profile picture uploaded</p>
+                <button type="button" onclick="document.getElementById('profilePictureDialog').showModal()" class="profile_button">
+                    <img src="{{ asset('profile-images/default-image.jpg')}}" alt="default profile picture" height="400px;">
+                    <span class="profile_button_text">Click to add/change profile picture</span>
+                </button>
             @endif
         </div>
-
-        <div>
+                         
+        <dialog id="profilePictureDialog">
             <form action="{{ route('updateProfilePicture') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                <input type="file" name="profile_picture">
+                <input type="file" name="profile_picture"><br>
                 <button type="submit">Upload Profile Picture</button>
-            </form>            
-        </div>        
+            </form><br>             
+            <button type="button" onclick="document.getElementById('profilePictureDialog').close()">Close</button>
+        </dialog>
 
+        <hr>
+        
         <div class="card">
             <div class="card-header">
                 <div class="row ">
