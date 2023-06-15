@@ -55,7 +55,7 @@ class LoginRegisterController extends Controller
             'youthorganisation' => 'required',
             'password' => 'required|min:8|confirmed'
         ]);
-
+    
         $member = Member::create([
             'lastname' => $request->lastname,
             'firstname' => $request->firstname,
@@ -69,15 +69,16 @@ class LoginRegisterController extends Controller
             'youthorganisation_id' => $request->youthorganisation,
             'approved_email_sent' => 0,
         ]);
-
+    
         // Additional logic, such as sending email verification, logging in the user, etc.
-        Mail::send('mail.registration-mail', $request->all(), function($message){
-            $message->to(request('email'))
-            ->subject('Bedankt voor uw registratie, '. request('firstname').'.');
+        Mail::send('mail.registration-mail', ['firstname' => $request->firstname, 'lastname' => $request->lastname], function($message) use ($request) {
+            $message->to($request->email)
+                ->subject('Bedankt voor uw registratie, '.$request->firstname.'.');
         });
-
+    
         return view('welcome');
     }
+    
 
     /**
      * Display a login form.
