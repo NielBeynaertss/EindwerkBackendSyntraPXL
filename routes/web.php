@@ -45,7 +45,7 @@ Route::controller(ListingController::class)->group(function() {
 });
 
 
-
+Route::post('/updateProfilePicture', [SettingsController::class, 'updateProfilePicture'])->name('updateProfilePicture');
 Route::get('/settings', [SettingsController::class, 'showSettingsPage'])->name('settings');
 
 Route::get('/events', [EventController::class, 'showEventsPage'])->name('events');

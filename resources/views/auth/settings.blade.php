@@ -9,6 +9,23 @@
 
 <div class="row justify-content-center mt-5">
     <div class="col-md-10">
+                
+        <div class="border">
+            @if (Auth::guard('member')->user()->profile_picture)
+                <img src="{{ asset('profile-images/' . Auth::guard('member')->user()->profile_picture) }}" alt="Profile Picture" height="400px;">
+            @else
+                <p>No profile picture uploaded</p>
+            @endif
+        </div>
+
+        <div>
+            <form action="{{ route('updateProfilePicture') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <input type="file" name="profile_picture">
+                <button type="submit">Upload Profile Picture</button>
+            </form>            
+        </div>        
+
         <div class="card">
             <div class="card-header">
                 <div class="row ">
@@ -109,6 +126,7 @@
             <button type="button" onclick="document.getElementById('changeCredentialsDialog').close()">Cancel</button>
 
         </dialog>
+
     </div>    
 </div>
 
