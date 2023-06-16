@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Member;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -13,11 +13,11 @@ class SettingsController extends Controller
 {
     public function showSettingsPage()
     {
-        $member = Auth::guard('member')->user();
+        $user = Auth::user();
 
-        if ($member && $member->approved) {
+        if ($user && $user->approved) {
 
-            $members = Member::all();
+            $users = User::all();
             return view('auth.settings');
         }
 
@@ -38,7 +38,7 @@ class SettingsController extends Controller
             $image->move(public_path('profile-images'), $imageName);
         }
     
-        $member = Auth::guard('member')->user();
+        $member = Auth::user();
         $member->update([
             'profile_picture' => $imageName, // Save the image name in the 'profile_picture' column
         ]);
@@ -53,7 +53,7 @@ class SettingsController extends Controller
             // Retrieve the submitted form data
             $lastname = request('lastname');
 
-            $member = Auth::guard('member')->user();
+            $member = Auth::user();
             $member->update([
                 'lastname' => $lastname
             ]);
@@ -65,7 +65,7 @@ class SettingsController extends Controller
             // Retrieve the submitted form data
             $firstname = request('firstname');
 
-            $member = Auth::guard('member')->user();
+            $member = Auth::user();
             $member->update([
                 'firstname' => $firstname
             ]);
@@ -77,7 +77,7 @@ class SettingsController extends Controller
             // Retrieve the submitted form data
             $email = request('email');
 
-            $member = Auth::guard('member')->user();
+            $member = Auth::user();
             $member->update([
                 'email' => $email
             ]);
@@ -89,7 +89,7 @@ class SettingsController extends Controller
             // Retrieve the submitted form data
             $phone = request('phone');
 
-            $member = Auth::guard('member')->user();
+            $member = Auth::user();
             $member->update([
                 'phone' => $phone
             ]);
@@ -101,7 +101,7 @@ class SettingsController extends Controller
             // Retrieve the submitted form data
             $streetnr = request('streetnr');
 
-            $member = Auth::guard('member')->user();
+            $member = Auth::user();
             $member->update([
                 'streetnr' => $streetnr
             ]);
@@ -113,7 +113,7 @@ class SettingsController extends Controller
             // Retrieve the submitted form data
             $city = request('city');
 
-            $member = Auth::guard('member')->user();
+            $member = Auth::user();
             $member->update([
                 'city' => $city
             ]);
@@ -125,7 +125,7 @@ class SettingsController extends Controller
             // Retrieve the submitted form data
             $password = request('password');
 
-            $member = Auth::guard('member')->user();
+            $member = Auth::user();
             $member->update([
                 'password' => Hash::make($password),
             ]);

@@ -37,9 +37,9 @@
     <div class="col-md-10">
                 
         <div class="text-center">
-            @if (Auth::guard('member')->user()->profile_picture)
+            @if (Auth::user()->profile_picture)
                 <button type="button" onclick="document.getElementById('profilePictureDialog').showModal()" class="profile_button">
-                    <img src="{{ asset('profile-images/' . Auth::guard('member')->user()->profile_picture) }}" alt="Profile Picture" height="400px;">
+                    <img src="{{ asset('profile-images/' . Auth::user()->profile_picture) }}" alt="Profile Picture" height="400px;">
                     <span class="profile_button_text">Click to add/change profile picture</span>
                 </button>
             @else
@@ -85,7 +85,7 @@
                             <p><b>Achternaam:</b></p>
                         </div>
                         <div class="col">
-                            <p>{{ Auth::guard('member')->user()->lastname}}</p>
+                            <p>{{ Auth::user()->lastname}}</p>
                         </div>
                         <div class="col">
                             <p><a onclick="document.getElementById('changeAchternaamDialog').showModal(); document.getElementById('changeCredentialsDialog').close()"><i class="fa-solid fa-pen-to-square"></i></a></p>
@@ -96,7 +96,7 @@
                             <p><b>Voornaam:</b></p>
                         </div>
                         <div class="col">
-                            <p>{{ Auth::guard('member')->user()->firstname}}</p>
+                            <p>{{ Auth::user()->firstname}}</p>
                         </div>
                         <div class="col">
                             <p><a onclick="document.getElementById('changeVoornaamDialog').showModal(); document.getElementById('changeCredentialsDialog').close()"><i class="fa-solid fa-pen-to-square"></i></a></p>
@@ -107,7 +107,7 @@
                             <p><b>Email adress</b></p>
                         </div>
                         <div class="col">
-                            <p>{{ Auth::guard('member')->user()->email}}</p>
+                            <p>{{ Auth::user()->email}}</p>
                         </div>
                         <div class="col">
                             <p><a onclick="document.getElementById('changeEmailDialog').showModal(); document.getElementById('changeCredentialsDialog').close()"><i class="fa-solid fa-pen-to-square"></i></a></p>
@@ -118,7 +118,7 @@
                             <p><b>GSM</b></p>
                         </div>
                         <div class="col">
-                            <p>{{ Auth::guard('member')->user()->phone}}</p>
+                            <p>{{ Auth::user()->phone}}</p>
                         </div>
                         <div class="col">
                             <p><a onclick="document.getElementById('changePhoneDialog').showModal(); document.getElementById('changeCredentialsDialog').close()""><i class="fa-solid fa-pen-to-square"></i></a></p>
@@ -129,7 +129,7 @@
                             <p><b>Straat + nummer</b></p>
                         </div>
                         <div class="col">
-                            <p>{{ Auth::guard('member')->user()->streetnr}}</p>
+                            <p>{{ Auth::user()->streetnr}}</p>
                         </div>
                         <div class="col">
                             <p><a onclick="document.getElementById('changeStreetnrDialog').showModal(); document.getElementById('changeCredentialsDialog').close()""><i class="fa-solid fa-pen-to-square"></i></a></p>
@@ -140,7 +140,7 @@
                             <p><b>Stad / gemeente</b></p>
                         </div>
                         <div class="col">
-                            <p>{{ Auth::guard('member')->user()->city}}</p>
+                            <p>{{ Auth::user()->city}}</p>
                         </div>
                         <div class="col">
                             <p><a onclick="document.getElementById('changeCityDialog').showModal(); document.getElementById('changeCredentialsDialog').close()""><i class="fa-solid fa-pen-to-square"></i></a></p>

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -9,9 +8,9 @@ class ForumController extends Controller
 {
     public function showForumPage()
     {
-        $member = Auth::guard('member')->user();
+        $user = Auth::user();
     
-        if ($member && $member->approved) {
+        if ($user && $user->approved) {
             return view('vendor.forum.master');
         }
     
