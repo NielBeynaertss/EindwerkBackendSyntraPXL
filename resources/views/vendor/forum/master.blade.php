@@ -1,17 +1,7 @@
 @extends('auth.layouts')
 @section('head')
-<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>
-        @if (isset($thread_title))
-            {{ $thread_title }} —
-        @endif
-        @if (isset($category))
-            {{ $category->title }} —
-        @endif
-        {{ trans('forum::general.home_title') }}
-    </title>
+
     <!-- Feather icons (https://github.com/feathericons/feather) -->
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
@@ -169,6 +159,8 @@
             padding: 1em;
         }
     }
+    </style>
+    
     <nav class="v-navbar navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url(config('forum.web.router.prefix')) }}">Forum</a>
