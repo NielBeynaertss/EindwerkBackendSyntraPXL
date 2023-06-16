@@ -63,19 +63,21 @@ class ListingController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:250',
-            'location' => 'required|string|max:250',
+            'city' => 'required|string|max:250',
             'description' => 'required|string|max:250',
             'category' => 'required',
             'typeOfTransaction' => 'required',
+            'postalcode' => 'required'
         ]);
 
         Listing::create([
             'title' => strtoupper($request->title),
-            'location' => $request->location,
+            'city' => $request->city,
             'description' => $request->description,
             'category' => $request->category,
             'type_of_transaction' => $request->typeOfTransaction,
-            'created_by' => Auth::guard('member')->user()->lastname .' '. Auth::guard('member')->user()->firstname
+            'created_by' => Auth::guard('member')->user()->lastname .' '. Auth::guard('member')->user()->firstname,
+            'postalcode' => $request->postalcode
         ]);
 
 

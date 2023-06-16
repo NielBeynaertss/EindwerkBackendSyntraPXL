@@ -11,10 +11,11 @@ class Listing extends Model
 
     protected $fillable = [
         'title',
-        'location',
+        'city',
         'description',
         'category',
         'type_of_transaction',
-        'created_by'
+        'created_by',
+        'postalcode'
     ];
 }
