@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Member;
 use Illuminate\Support\Facades\Auth;
 use App\Models\TypeOfTransaction;
 use Illuminate\Support\Facades\DB;
@@ -17,9 +16,9 @@ class ListingController extends Controller
 
     public function showMarketplacePage(Request $request)
     {
-        $member = Auth::guard('member')->user();
+        $user = Auth::user();
 
-        if ($member && $member->approved) {
+        if ($user && $user->approved) {
             $categories = Category::all();
             $query = Listing::query();
 
@@ -63,19 +62,21 @@ class ListingController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:250',
-            'location' => 'required|string|max:250',
+            'city' => 'required|string|max:250',
             'description' => 'required|string|max:250',
             'category' => 'required',
             'typeOfTransaction' => 'required',
+            'postalcode' => 'required'
         ]);
 
         Listing::create([
             'title' => strtoupper($request->title),
-            'location' => $request->location,
+            'city' => $request->city,
             'description' => $request->description,
             'category' => $request->category,
             'type_of_transaction' => $request->typeOfTransaction,
-            'created_by' => Auth::guard('member')->user()->lastname .' '. Auth::guard('member')->user()->firstname
+            'created_by' => Auth::user()->lastname .' '. Auth::user()->firstname,
+            'postalcode' => $request->postalcode
         ]);
 
 
@@ -92,11 +93,11 @@ class ListingController extends Controller
 
     public function addToFavorites(Request $request)
     {
-        $member = Auth::guard('member')->user();
+        $user = Auth::user();
         $listingId = $request->input('listingId');
 
-        // Retrieve the member's current favorite listings
-        $favoriteListings = $member->favourite_listings ? json_decode($member->favourite_listings, true) : [];
+        // Retrieve the user's current favorite listings
+        $favoriteListings = $user->favourite_listings ? json_decode($user->favourite_listings, true) : [];
 
         // Convert the existing string value to an array if it's not already
         if (!is_array($favoriteListings)) {
@@ -112,9 +113,9 @@ class ListingController extends Controller
             $favoriteListings[] = $listingId;
         }
 
-        // Update the member's favorite listings in the database
-        $member->favourite_listings = json_encode($favoriteListings);
-        $member->save();
+        // Update the user's favorite listings in the database
+        $user->favourite_listings = json_encode($favoriteListings);
+        $user->save();
 
         // Redirect back to the current listing page
         return redirect()->back();

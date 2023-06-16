@@ -20,7 +20,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto">
-                    @if (Auth::guard('member')->check())
+                    @if (Auth::check())
                         <!-- Authenticated navbar links -->
                         <li class="nav-item"><a class="nav-link" href="{{ route('marketplace') }}">Marketplace</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('events') }}">Events</a></li>
@@ -28,7 +28,7 @@
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ Auth::guard('member')->user()->firstname }}
+                                {{ Auth::user()->firstname }}
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{ route('dashboard') }}"><i class="fa-solid fa-user"></i> Dashboard</a></li>

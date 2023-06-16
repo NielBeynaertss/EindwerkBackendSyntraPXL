@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\Member;
+use App\Models\User;
 use App\Models\Youthorganisation;
 
 use Illuminate\Http\Request;
@@ -35,13 +35,6 @@ class LoginRegisterController extends Controller
         return view('auth.register', compact('youthorganisations'));
     }
     
-
-    /**
-     * Store a new user.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function storeNewMember(Request $request)
     {
         $request->validate([
@@ -56,7 +49,7 @@ class LoginRegisterController extends Controller
             'password' => 'required|min:8|confirmed'
         ]);
     
-        $member = Member::create([
+        $user = User::create([
             'lastname' => $request->lastname,
             'firstname' => $request->firstname,
             'email' => $request->email,
@@ -106,11 +99,11 @@ class LoginRegisterController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-
+    
         // Perform authentication logic here (e.g., check credentials against the database)
         $credentials = $request->only('email', 'password');
-
-        if (Auth::guard('member')->attempt($credentials)) {
+    
+        if (Auth::attempt($credentials)) {
             // Authentication successful
             return redirect()->route('dashboard')->with('success', 'Login successful!');
         } else {
@@ -118,6 +111,7 @@ class LoginRegisterController extends Controller
             return redirect()->back()->withErrors(['email' => 'Invalid credentials.']);
         }
     }
+     
 
     
     /**
@@ -127,7 +121,7 @@ class LoginRegisterController extends Controller
      */
     public function dashboard()
     {
-        if(Auth::guard('member')->check())
+        if(Auth::check())
         {
             return view('auth.dashboard');
         }

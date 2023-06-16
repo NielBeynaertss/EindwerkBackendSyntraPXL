@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Member;
 use App\Models\Event;
 
 class EventController extends Controller
@@ -13,9 +12,9 @@ class EventController extends Controller
     
     public function showEventsPage()
     {
-        $member = Auth::guard('member')->user();
+        $user = Auth::user();
     
-        if ($member && $member->approved) {
+        if ($user && $user->approved) {
             $events = Event::where('approved', 1)->get();
             return view('pages.events', compact('events'));
         }
@@ -53,7 +52,7 @@ class EventController extends Controller
             'fee' => $request->fee,
             'description' => $request->description,
             'picture' => $imageName, // Save the image name in the 'picture' column
-            'created_by' => Auth::guard('member')->user()->lastname .' '. Auth::guard('member')->user()->firstname,
+            'created_by' => Auth::user()->lastname .' '. Auth::user()->firstname,
             'approved' => 0,
         ]);
         

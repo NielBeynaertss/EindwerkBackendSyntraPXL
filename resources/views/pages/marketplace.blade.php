@@ -59,6 +59,7 @@
                         <label for="category">Category:</label><br><br>
                         <label for="typeOfTransaction">Type of Transaction:</label><br><br>
                         <label for="location">Stad / Gemeente:</label><br><br>
+                        <label for="postalcode">Postcode:</label><br><br>
                         <label for="description">Beschrijving:</label><br><br>
                     </div>
                     <div class="col">
@@ -107,7 +108,8 @@
                             <option value="Sell">Sell</option>
                         </select><br><br>
                         
-                        <input type="text" id="location" name="location" required><br><br>
+                        <input type="text" id="city" name="city" required><br><br>
+                        <input type="text" id="postalcode" name="postalcode" required><br><br>
                         <textarea type="text" id="description" name="description" required></textarea><br><br>
                     </div>
                 </div>
