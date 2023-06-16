@@ -12,7 +12,7 @@ class ForumController extends Controller
         $member = Auth::guard('member')->user();
     
         if ($member && $member->approved) {
-            return view('vendor.master');
+            return view('vendor.forum.master');
         }
     
         return redirect()->route('dashboard')->with('message', 'This page can only be accessed once your account has been approved.');

@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginRegisterController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\ForumController;
 
 
 /*
@@ -56,4 +57,10 @@ Route::controller(EventController::class)->group(function() {
     Route::get('/event/{id}', 'showEventDetails')->name('eventDetail');
 
     Route::post('/storeEvent', 'storeEvent')->name('storeEvent');
+});
+
+
+Route::controller(ForumController::class)->group(function() {
+    Route::get('/forum', 'showForumPage')->name('forum');
+
 });
