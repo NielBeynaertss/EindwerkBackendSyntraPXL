@@ -7,7 +7,7 @@
                 <div class="col d-flex justify-content-between pb-3">
                     <h2 class="text-center">{{ $listing->title }}</h2>
 
-                    <form action="{{ route('addToFavorites') }}" method="post">
+                    <form action="{{ route('addListingToFavorites') }}" method="post">
                         @csrf
                         <input type="hidden" name="listingId" value="{{ $listing->id }}">
                         <button type="submit" class="btn btn-danger">

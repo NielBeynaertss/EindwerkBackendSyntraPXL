@@ -8,8 +8,6 @@ use App\Models\Event;
 
 class EventController extends Controller
 {
-
-    
     public function showEventsPage()
     {
         $user = Auth::user();
@@ -21,7 +19,6 @@ class EventController extends Controller
     
         return redirect()->route('dashboard')->with('message', 'This page can only be accessed once your account has been approved.');
     }
-
     public function storeEvent(Request $request)
     {
         $request->validate([
@@ -60,13 +57,39 @@ class EventController extends Controller
         // Redirect back to the current listing page
         return redirect()->back();
     }
-
     public function showEventDetails($id)
     {
         $event = Event::find($id);
         return view('pages.event-detail', compact('event'));
     }
-    
+    public function addEventToFavorites(Request $request)
+    {
+        $user = Auth::user();
+        $eventId = $request->input('eventId');
 
+        // Retrieve the user's current favorite listings
+        $favoriteEvents = $user->favourite_events ? json_decode($user->favourite_events, true) : [];
 
+        // Convert the existing string value to an array if it's not already
+        if (!is_array($favoriteEvents)) {
+            $favoriteEvents = [$favoriteEvents];
+        }
+
+        // Add or remove the listing ID from the favorites array based on its presence
+        if (in_array($eventId, $favoriteEvents)) {
+            // Remove the listing ID from favorites
+            $favoriteEvents = array_diff($favoriteEvents, [$eventId]);
+        } else {
+            // Add the listing ID to favorites
+            $favoriteEvents[] = $eventId;
+        }
+
+        // Update the user's favorite listings in the database
+        $user->favourite_events = json_encode($favoriteEvents);
+        $user->save();
+
+        // Redirect back to the current listing page
+        return redirect()->back();
+
+    } 
 }

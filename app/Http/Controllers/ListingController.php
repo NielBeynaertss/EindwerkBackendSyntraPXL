@@ -13,7 +13,6 @@ use Illuminate\Pagination\Paginator;
 
 class ListingController extends Controller
 {
-
     public function showMarketplacePage(Request $request)
     {
         $user = Auth::user();
@@ -51,13 +50,7 @@ class ListingController extends Controller
     public function clearFilters()
     {
         return redirect()->route('marketplace');
-    }
-
-
-    
-   
-
-    
+    } 
     public function storeListing(Request $request)
     {
         $request->validate([
@@ -83,15 +76,12 @@ class ListingController extends Controller
         // Redirect back to the current listing page
         return redirect()->back();
     }
-
-
     public function showListingDetails($id)
     {
         $listing = Listing::find($id);
         return view('pages.listing-detail', compact('listing'));
     }
-
-    public function addToFavorites(Request $request)
+    public function addListingToFavorites(Request $request)
     {
         $user = Auth::user();
         $listingId = $request->input('listingId');
@@ -120,5 +110,4 @@ class ListingController extends Controller
         // Redirect back to the current listing page
         return redirect()->back();
     }
-
 }
