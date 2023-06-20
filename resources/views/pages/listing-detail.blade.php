@@ -1,5 +1,6 @@
 @extends('auth.layouts')
 
+
 @section('content')
     <div class="row justify-content-center mt-5">
         <div class="col-md-10">
@@ -27,9 +28,37 @@
                 </div>
                 <hr>
             </div>
-            @foreach ($listing->pictures as $picture)
-                <img src="{{ asset('listing-images/' . $picture) }}" alt="Listing Image" class="img-fluid">
-            @endforeach
+
+
+            <div class="row d-flex justify-content-center">
+                <div class="col-4">
+                    <div id="carouselPictures" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            @foreach ($listing->pictures as $index => $picture)
+                                <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                                    <img src="{{ asset('listing-images/' . $picture) }}" alt="Listing Image" class="d-block w-100" style="height: 300px">
+                                </div>
+                            @endforeach
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselPictures" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselPictures" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            
+            
+            
+
+            
             <p>Description: {{ $listing->description }}</p>
             <p>Location: {{ $listing->location }}</p>
             <p>Sell / Loan?: {{ $listing->type_of_transaction }}</p>
