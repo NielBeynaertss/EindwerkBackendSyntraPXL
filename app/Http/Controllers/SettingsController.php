@@ -23,7 +23,6 @@ class SettingsController extends Controller
 
         return redirect()->route('dashboard')->with('message', 'This page can only be accessed once your account has been approved.');
     }
-
     public function updateProfilePicture(Request $request)
     {
         $request->validate([
@@ -46,96 +45,40 @@ class SettingsController extends Controller
         // Redirect back to the current listing page
         return redirect()->back();
     }
-
-    public function updateCredentials($id)
+    public function updateCredentials(Request $request)
     {
-        if ($id === 'lastname') {    
-            // Retrieve the submitted form data
-            $lastname = request('lastname');
-
-            $member = Auth::user();
-            $member->update([
-                'lastname' => $lastname
-            ]);
-
-            // Redirect back to the settings page or any other desired location
-            return redirect()->back();
+        $user = Auth::user();
+        $updatedFields = $request->except('_token');
+    
+        foreach ($updatedFields as $field => $value) {
+            if ($user->{$field} !== $value) {
+                $user->{$field} = $value;
+            }
         }
-        if ($id === 'firstname') {    
-            // Retrieve the submitted form data
-            $firstname = request('firstname');
-
-            $member = Auth::user();
-            $member->update([
-                'firstname' => $firstname
-            ]);
-
-            // Redirect back to the settings page or any other desired location
-            return redirect()->back();
-        }
-        if ($id === 'email') {    
-            // Retrieve the submitted form data
-            $email = request('email');
-
-            $member = Auth::user();
-            $member->update([
-                'email' => $email
-            ]);
-
-            // Redirect back to the settings page or any other desired location
-            return redirect()->back();
-        }
-        if ($id === 'phone') {    
-            // Retrieve the submitted form data
-            $phone = request('phone');
-
-            $member = Auth::user();
-            $member->update([
-                'phone' => $phone
-            ]);
-
-            // Redirect back to the settings page or any other desired location
-            return redirect()->back();
-        }
-        if ($id === 'streetnr') {    
-            // Retrieve the submitted form data
-            $streetnr = request('streetnr');
-
-            $member = Auth::user();
-            $member->update([
-                'streetnr' => $streetnr
-            ]);
-
-            // Redirect back to the settings page or any other desired location
-            return redirect()->back();
-        }
-        if ($id === 'city') {    
-            // Retrieve the submitted form data
-            $city = request('city');
-
-            $member = Auth::user();
-            $member->update([
-                'city' => $city
-            ]);
-
-            // Redirect back to the settings page or any other desired location
-            return redirect()->back();
-        }
-        if ($id === 'password') {    
-            // Retrieve the submitted form data
-            $password = request('password');
-
-            $member = Auth::user();
-            $member->update([
-                'password' => Hash::make($password),
-            ]);
-
-            // Redirect back to the settings page or any other desired location
-            return redirect()->back();
-        }
-        // If no matching ID is found, return a redirect or error message
-        return redirect()->back()->with('error', 'Invalid ID.');
+    
+        $user->update();
+    
+        // Redirect back to the settings page or any other desired location
+        return redirect()->back();
     }
+    public function updatePassword(Request $request)
+    {
+        $validatedData = $request->validate([
+            'password' => 'required|min:8|confirmed',
+        ]);
+    
+        $password = $validatedData['password'];
+    
+        $user = Auth::user();
+        $user->update([
+            'password' => Hash::make($password),
+        ]);
+    
+        // Redirect back to the settings page or any other desired location
+        return redirect()->back();
+    }
+    
+    
     
     
 
