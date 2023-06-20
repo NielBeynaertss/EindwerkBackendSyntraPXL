@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Models\TypeOfTransaction;
 use Illuminate\Support\Facades\DB;
 use App\Models\Category;
@@ -59,9 +60,21 @@ class ListingController extends Controller
             'description' => 'required|string|max:250',
             'category' => 'required',
             'typeOfTransaction' => 'required',
-            'postalcode' => 'required'
+            'postalcode' => 'required',
+            'pictures' => 'required|array', // Add validation rule for the pictures field
+            'pictures.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Add validation rule for each picture in the array
         ]);
-
+    
+        $pictures = [];
+    
+        if ($request->hasFile('pictures')) {
+            foreach ($request->file('pictures') as $picture) {
+                $pictureName = time() . '_' . $picture->getClientOriginalName();
+                $picture->move(public_path('listing-images'), $pictureName);
+                $pictures[] = $pictureName;
+            }
+        }
+    
         Listing::create([
             'title' => strtoupper($request->title),
             'city' => $request->city,
@@ -69,10 +82,10 @@ class ListingController extends Controller
             'category' => $request->category,
             'type_of_transaction' => $request->typeOfTransaction,
             'created_by' => Auth::user()->lastname .' '. Auth::user()->firstname,
-            'postalcode' => $request->postalcode
+            'postalcode' => $request->postalcode,
+            'pictures' => $pictures, // Save the array of picture names in the 'pictures' column
         ]);
-
-
+    
         // Redirect back to the current listing page
         return redirect()->back();
     }
