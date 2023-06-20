@@ -44,7 +44,9 @@ Route::controller(ListingController::class)->group(function() {
 Route::controller(SettingsController::class)->group(function() {
     Route::get('/settings', 'showSettingsPage')->name('settings');
     Route::post('/updateProfilePicture', 'updateProfilePicture')->name('updateProfilePicture');
-    Route::post('/updateCredentials/{id}', 'updateCredentials')->name('updateCredentials');
+    Route::post('/updatePassword', 'updatePassword')->name('updatePassword');
+    Route::post('/updateCredentials', 'updateCredentials')->name('updateCredentials');
+    Route::post('/settings', 'updateCredentials')->name('updateCredentials');
 });
 Route::controller(EventController::class)->group(function() {
     Route::get('/events', 'showEventsPage')->name('events');
