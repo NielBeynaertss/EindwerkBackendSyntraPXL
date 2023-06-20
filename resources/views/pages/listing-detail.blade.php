@@ -5,6 +5,11 @@
         <div class="col-md-10">
             <div class="row">
                 <div class="col d-flex justify-content-between pb-3">
+                    <!-- Add the back button -->
+                    <button type="button" class="btn btn-secondary" onclick="window.history.back()">
+                        <i class="fa-solid fa-arrow-left"></i> Back
+                    </button>
+
                     <h2 class="text-center">{{ $listing->title }}</h2>
 
                     <form action="{{ route('addListingToFavorites') }}" method="post">
@@ -22,13 +27,15 @@
                 </div>
                 <hr>
             </div>
+            @foreach ($listing->pictures as $picture)
+                <img src="{{ asset('listing-images/' . $picture) }}" alt="Listing Image" class="img-fluid">
+            @endforeach
             <p>Description: {{ $listing->description }}</p>
             <p>Location: {{ $listing->location }}</p>
             <p>Sell / Loan?: {{ $listing->type_of_transaction }}</p>
             <p>Created At: {{ $listing->created_at->format('d-m-y') }}</p>
             <p>Created by: {{ $listing->created_by }}</p>
-            <p>Postcode: {{ $listing->postalcode }}</p>
-
+            <p>Postcode: {{ $listing->postalcode }}</p> 
         </div>
     </div>
 @endsection

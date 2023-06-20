@@ -16,6 +16,12 @@ class Listing extends Model
         'category',
         'type_of_transaction',
         'created_by',
-        'postalcode'
+        'postalcode',
+        'pictures'
     ];
+
+    protected $casts = [
+        'pictures' => 'array',
+    ];
+    
 }

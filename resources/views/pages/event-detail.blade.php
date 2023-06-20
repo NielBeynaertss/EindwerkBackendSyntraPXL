@@ -5,6 +5,10 @@
         <div class="col-md-10">
             <div class="row">
                 <div class="col d-flex justify-content-between pb-3">
+                    <button type="button" class="btn btn-secondary" onclick="window.history.back()">
+                        <i class="fa-solid fa-arrow-left"></i> Back
+                    </button>
+                    
                     <h2 class="text-center">{{ $event->title }}</h2>
 
                     <form action="{{ route('addEventToFavorites') }}" method="post">

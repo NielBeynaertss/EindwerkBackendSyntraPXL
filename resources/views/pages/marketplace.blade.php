@@ -51,7 +51,7 @@
 
         <!--Create listing popup-->
         <dialog id="createListingDialog">
-            <form action="{{ route('storeListing') }}" method="post">
+            <form action="{{ route('storeListing') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col">
@@ -111,6 +111,8 @@
                         <input type="text" id="city" name="city" required><br><br>
                         <input type="text" id="postalcode" name="postalcode" required><br><br>
                         <textarea type="text" id="description" name="description" required></textarea><br><br>
+                        <input type="file" id="pictures" name="pictures[]" multiple>
+
                     </div>
                 </div>
                 <button type="submit">Submit</button>
