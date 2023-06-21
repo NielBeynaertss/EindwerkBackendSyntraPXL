@@ -33,6 +33,12 @@ Route::controller(LoginRegisterController::class)->group(function() {
     Route::post('/storeNewMember', 'storeNewMember')->name('storeNewMember');
     Route::post('/authenticate', 'authenticate')->name('authenticate');
     Route::post('/logout', 'logout')->name('logout');
+
+    Route::get('/password/reset', 'showForgotPasswordPage')->name('password.request');
+    Route::post('/password/email', 'forgotPassword')->name('password.email');
+    Route::get('/password/reset/{token}', 'showResetForm')->name('password.reset');
+    Route::post('/password/reset', 'resetPassword')->name('password.update');
+    
 });
 Route::controller(ListingController::class)->group(function() {
     Route::get('/marketplace', 'showMarketplacePage')->name('marketplace');

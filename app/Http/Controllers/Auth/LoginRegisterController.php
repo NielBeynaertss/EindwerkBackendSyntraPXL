@@ -10,31 +10,23 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Password;
+
 
 
 class LoginRegisterController extends Controller
 {
-    /**
-     * Instantiate a new LoginRegisterController instance.
-     */
     public function __construct()
     {
         $this->middleware('guest')->except([
             'logout', 'dashboard'
         ]);
     }
-
-    /**
-     * Display a registration form.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function register()
     {
         $youthorganisations = Youthorganisation::all(); // Fetch all youth organizations from the database
         return view('auth.register', compact('youthorganisations'));
     }
-    
     public function storeNewMember(Request $request)
     {
         $request->validate([
@@ -71,27 +63,10 @@ class LoginRegisterController extends Controller
     
         return view('welcome');
     }
-    
-
-    /**
-     * Display a login form.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function login()
     {
         return view('auth.login');
     }
-
-    /**
-     * Authenticate the user.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
-
-
     public function authenticate(Request $request)
     {
         // Validate the login form data
@@ -111,14 +86,6 @@ class LoginRegisterController extends Controller
             return redirect()->back()->withErrors(['email' => 'Invalid credentials.']);
         }
     }
-     
-
-    
-    /**
-     * Display a dashboard to authenticated users.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function dashboard()
     {
         if(Auth::check())
@@ -131,13 +98,6 @@ class LoginRegisterController extends Controller
             'email' => 'Please login to access the dashboard.',
         ])->onlyInput('email');
     } 
-    
-    /**
-     * Log out the user from application.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function logout(Request $request)
     {
         Auth::logout();
@@ -146,5 +106,54 @@ class LoginRegisterController extends Controller
         return redirect()->route('login')
             ->withSuccess('You have logged out successfully!');;
     }    
+    public function showForgotPasswordPage(Request $request)
+    {
+        return view('auth.forgot-password');    
+    }
+    public function forgotPassword(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|max:250|exists:users,email',
+        ]);
+
+        $status = Password::sendResetLink($request->only('email'));
+
+
+        if ($status === Password::RESET_LINK_SENT) {
+            return redirect()->back()->with('success', 'Password reset link sent to your email!');
+        } else {
+            return redirect()->back()->withErrors(['email' => __($status)]);
+        }
+    }
+    public function showResetForm(Request $request, $token)
+    {
+        return view('auth.new-password', compact('token'));    
+    }    
+    public function resetPassword(Request $request)
+    {
+        $request->validate([
+            'token' => 'required',
+            'email' => 'required|email|max:250',
+            'password' => 'required|min:8|confirmed',
+        ]);
+
+        $credentials = $request->only(
+            'email', 'password', 'password_confirmation', 'token'
+        );
+
+        $status = Password::reset($credentials, function ($user, $password) {
+            $user->forceFill([
+                'password' => Hash::make($password)
+            ])->save();
+        });
+
+        if ($status === Password::PASSWORD_RESET) {
+            return redirect()->route('login')->with('success', 'Your password has been reset successfully!');
+        } else {
+            return redirect()->back()->withErrors(['email' => __($status)]);
+        }
+    }
+
+    
 
 }
