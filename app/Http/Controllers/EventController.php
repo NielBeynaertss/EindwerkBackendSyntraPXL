@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Event;
+use Illuminate\Pagination\Paginator;
+
 
 class EventController extends Controller
 {
@@ -13,7 +15,10 @@ class EventController extends Controller
         $user = Auth::user();
     
         if ($user && $user->approved) {
-            $events = Event::where('approved', 1)->get();
+            $events = Event::where('approved', 1)->paginate(6);
+
+            Paginator::useBootstrap(); // Use Bootstrap styling for the pagination links
+
             return view('pages.events', compact('events'));
         }
     
@@ -24,6 +29,7 @@ class EventController extends Controller
         $request->validate([
             'title' => 'required',
             'location' => 'required',
+            'postalcode' => 'required',
             'date' => 'required',
             'starttime' => 'required',
             'endtime' => 'required',
@@ -43,6 +49,7 @@ class EventController extends Controller
         Event::create([
             'title' => strtoupper($request->title),
             'location' => $request->location,
+            'postalcode' => $request->postalcode,
             'date' => $request->date,
             'starttime' => $request->starttime,
             'endtime' => $request->endtime,

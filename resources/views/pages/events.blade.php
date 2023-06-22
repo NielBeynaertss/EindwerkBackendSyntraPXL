@@ -34,6 +34,7 @@
                     <div class="col">
                         <label for="title">Event titel:</label><br><br>
                         <label for="location">Locatie:</label><br><br>
+                        <label for="postalcode">Postcode:</label><br><br>
                         <label for="date">Datum:</label><br><br>
                         <label for="starttime">Startuur:</label><br><br>
                         <label for="endtime">Einduur:</label><br><br>
@@ -44,6 +45,7 @@
                     <div class="col">
                         <input type="text" id="title" name="title" required><br><br>
                         <input type="text" id="location" name="location" required><br><br>
+                        <input type="text" id="postalcode" name="postalcode" required><br><br>
                         <input type="date" id="date" name="date" required><br><br>
                         <input type="time" id="starttime" name="starttime" required><br><br>
                         <input type="time" id="endtime" name="endtime" required><br><br>
@@ -92,6 +94,13 @@
                     </a>
                 </div>
             @endforeach
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <!-- Display pagination links -->
+                {{ $events->appends(request()->query())->links() }}
+            </div>
         </div>
         
         
