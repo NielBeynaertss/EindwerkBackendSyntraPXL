@@ -31,27 +31,77 @@
             <form action="{{ route('storeEvent') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
-                    <div class="col">
-                        <label for="title">Event titel:</label><br><br>
-                        <label for="location">Locatie:</label><br><br>
-                        <label for="postalcode">Postcode:</label><br><br>
-                        <label for="date">Datum:</label><br><br>
-                        <label for="starttime">Startuur:</label><br><br>
-                        <label for="endtime">Einduur:</label><br><br>
-                        <label for="fee">Kostprijs:</label><br><br>
-                        <label for="description">Beschrijving:</label><br><br>
-                        <label for="picture">Afbeelding:</label><br><br>
+                    <div class="row">
+                        <div class="col">
+                            <label for="title">Event titel:</label><br><br>
+                        </div>
+                        <div class="col">
+                            <input type="text" id="title" name="title" required><br><br>
+                        </div>
                     </div>
-                    <div class="col">
-                        <input type="text" id="title" name="title" required><br><br>
-                        <input type="text" id="location" name="location" required><br><br>
-                        <input type="text" id="postalcode" name="postalcode" required><br><br>
-                        <input type="date" id="date" name="date" required><br><br>
-                        <input type="time" id="starttime" name="starttime" required><br><br>
-                        <input type="time" id="endtime" name="endtime" required><br><br>
-                        <input type="number" step="0.5" id="fee" name="fee" required><br><br>
-                        <textarea id="description" name="description" required></textarea><br><br>
-                        <input type="file" id="picture" name="picture"><br><br>
+                    <div class="row">
+                        <div class="col">
+                            <label for="location">Locatie:</label><br><br>
+                        </div>
+                        <div class="col">
+                            <input type="text" id="location" name="location" required><br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="postalcode">Postcode:</label><br><br>
+                        </div>
+                        <div class="col">
+                            <input type="text" id="postalcode" name="postalcode" required><br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="date">Datum:</label><br><br>
+                        </div>
+                        <div class="col">
+                            <input type="date" id="date" name="date" required><br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="starttime">Startuur:</label><br><br>
+                        </div>
+                        <div class="col">
+                            <input type="time" id="starttime" name="starttime" required><br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="endtime">Einduur:</label><br><br>
+                        </div>
+                        <div class="col">
+                            <input type="time" id="endtime" name="endtime" required><br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="fee">Kostprijs:</label><br><br>
+                        </div>
+                        <div class="col">
+                            <input type="number" step="0.5" id="fee" name="fee" required><br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="description">Beschrijving:</label><br><br>
+                        </div>
+                        <div class="col">
+                            <textarea id="description" name="description" required></textarea><br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="picture">Afbeelding:</label><br><br>
+                        </div>
+                        <div class="col">
+                            <input type="file" id="picture" name="picture"><br><br>
+                        </div>
                     </div>
                 </div>
                 <button type="submit">Submit</button>
