@@ -62,7 +62,7 @@
 
                             <div class="ml-4">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    To get started go to the <a href="{{ route('register') }}">registration page</a> and create an account. Once submitted, you can already login but not view the whole functionality, our team will review your registration, once approved you will receive an email and get access to the full functionality of our application.
+                                    To get started go to the <a href="{{ route('register') }}">registration page (top right)</a> and create an account. Once submitted, you can already login but not view the whole functionality, our team will review your registration, once approved you will receive an email and get access to the full functionality of our application.
                                 </div>
                             </div>
                         </div>
