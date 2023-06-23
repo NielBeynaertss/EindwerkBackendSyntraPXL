@@ -16,11 +16,7 @@
                         <input type="hidden" name="eventId" value="{{ $event->id }}">
                         <button type="submit" class="btn btn-danger">
                             <i class="fa-solid fa-star"></i> 
-                            @if(in_array($event->id, $member->favourite_listings ?? []))
-                                Verwijder uit favorieten
-                            @else
                                 Voeg toe aan favorieten
-                            @endif
                         </button>                        
                     </form>
                 </div>

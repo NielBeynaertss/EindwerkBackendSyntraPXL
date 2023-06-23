@@ -9,24 +9,22 @@
                     <button type="button" class="btn btn-secondary" onclick="window.history.back()">
                         <i class="fa-solid fa-arrow-left"></i> Terug
                     </button>
-
+            
                     <h2 class="text-center">{{ $listing->title }}</h2>
-
+            
                     <form action="{{ route('addListingToFavorites') }}" method="post">
                         @csrf
                         <input type="hidden" name="listingId" value="{{ $listing->id }}">
                         <button type="submit" class="btn btn-danger">
                             <i class="fa-solid fa-star"></i> 
-                            @if(in_array($listing->id, $member->favourite_listings ?? []))
-                                Verwijder uit favorieten
-                            @else
                                 Voeg toe aan favorieten
-                            @endif
                         </button>                        
                     </form>
                 </div>
                 <hr>
             </div>
+            
+            
 
             <div class="row d-flex justify-content-center">
                 <div class="col-4">
