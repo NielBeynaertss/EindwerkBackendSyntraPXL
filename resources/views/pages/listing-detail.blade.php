@@ -59,6 +59,7 @@
             <p>Description: {{ $listing->description }}</p>
             <p>Location: {{ $listing->location }}</p>
             <p>Sell / Loan?: {{ $listing->type_of_transaction }}</p>
+            <p>Sell / Loan?: €{{ $listing->price }}</p>
             <p>Created At: {{ $listing->created_at->format('d-m-y') }}</p>
             <p>Created by: {{ $listing->created_by }}</p>
             <p>Postcode: {{ $listing->postalcode }}</p> 

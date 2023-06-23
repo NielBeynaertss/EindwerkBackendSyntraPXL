@@ -120,6 +120,14 @@
                     </div>
                     <div class="row">
                         <div class="col">
+                            <label for="price">Prijs:</label><br><br>
+                        </div>
+                        <div class="col">
+                            <input type="number" step="0.5" id="price" name="price" required><br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
                             <label for="location">Stad / Gemeente:</label><br><br>
                         </div>
                         <div class="col">

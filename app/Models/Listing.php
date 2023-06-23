@@ -15,6 +15,7 @@ class Listing extends Model
         'description',
         'category',
         'type_of_transaction',
+        'price',
         'created_by',
         'postalcode',
         'pictures'

@@ -60,6 +60,7 @@ class ListingController extends Controller
             'description' => 'required|string|max:250',
             'category' => 'required',
             'typeOfTransaction' => 'required',
+            'price' => 'required',
             'postalcode' => 'required',
             'pictures' => 'required|array', // Add validation rule for the pictures field
             'pictures.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Add validation rule for each picture in the array
@@ -81,6 +82,7 @@ class ListingController extends Controller
             'description' => $request->description,
             'category' => $request->category,
             'type_of_transaction' => $request->typeOfTransaction,
+            'price' => $request->price,
             'created_by' => Auth::user()->lastname .' '. Auth::user()->firstname,
             'postalcode' => $request->postalcode,
             'pictures' => $pictures, // Save the array of picture names in the 'pictures' column
