@@ -7,7 +7,7 @@
                 <div class="col d-flex justify-content-between pb-3">
                     <!-- Add the back button -->
                     <button type="button" class="btn btn-secondary" onclick="window.history.back()">
-                        <i class="fa-solid fa-arrow-left"></i> Back
+                        <i class="fa-solid fa-arrow-left"></i> Terug
                     </button>
 
                     <h2 class="text-center">{{ $listing->title }}</h2>
@@ -18,9 +18,9 @@
                         <button type="submit" class="btn btn-danger">
                             <i class="fa-solid fa-star"></i> 
                             @if(in_array($listing->id, $member->favourite_listings ?? []))
-                                Delete from Favorites
+                                Verwijder uit favorieten
                             @else
-                                Add to Favorites
+                                Voeg toe aan favorieten
                             @endif
                         </button>                        
                     </form>
@@ -40,28 +40,26 @@
                                 @endforeach
                             @else
                                 <div class="carousel-item active">
-                                    <p>No pictures available for this listing.</p>
+                                    <p>Geen fotos beschikbaar voor dit zoekertje.</p>
                                 </div>
                             @endif
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselPictures" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
+                            <span class="visually-hidden">Vorige</span>
                         </button>
                         <button class="carousel-control-next" type="button" data-bs-target="#carouselPictures" data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
+                            <span class="visually-hidden">Volgende</span>
                         </button>
                     </div>
                 </div>
             </div>
 
-            <p>Description: {{ $listing->description }}</p>
-            <p>Location: {{ $listing->location }}</p>
-            <p>Sell / Loan?: {{ $listing->type_of_transaction }}</p>
-            <p>Sell / Loan?: €{{ $listing->price }}</p>
-            <p>Created At: {{ $listing->created_at->format('d-m-y') }}</p>
-            <p>Created by: {{ $listing->created_by }}</p>
+            <p>Beschrijving: {{ $listing->description }}</p>
+            <p>Adres: {{ $listing->location }}</p>
+            <p>Verkoop / Lenen?: {{ $listing->type_of_transaction }}</p>
+            <p>Prijs: €{{ $listing->price }}</p>
             <p>Postcode: {{ $listing->postalcode }}</p> 
         </div>
     </div>

@@ -6,12 +6,12 @@
     <div class="col-md-8">
 
         <div class="card">
-            <div class="card-header">Register</div>
+            <div class="card-header">Registreren</div>
             <div class="card-body">
                 <form action="{{ route('storeNewMember') }}" method="post">
                     @csrf
                     <div class="mb-3 row">
-                        <label for="lastname" class="col-md-4 col-form-label text-md-end text-start">lastname</label>
+                        <label for="lastname" class="col-md-4 col-form-label text-md-end text-start">Achternaam: </label>
                         <div class="col-md-6">
                           <input type="text" class="form-control @error('lastname') is-invalid @enderror" id="lastname" name="lastname" value="{{ old('lastname') }}">
                             @if ($errors->has('lastname'))
@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="firstname" class="col-md-4 col-form-label text-md-end text-start">firstname</label>
+                        <label for="firstname" class="col-md-4 col-form-label text-md-end text-start">Voornaam: </label>
                         <div class="col-md-6">
                           <input type="firstname" class="form-control @error('firstname') is-invalid @enderror" id="firstname" name="firstname">
                             @if ($errors->has('firstname'))
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="email" class="col-md-4 col-form-label text-md-end text-start">Email Address</label>
+                        <label for="email" class="col-md-4 col-form-label text-md-end text-start">Email: </label>
                         <div class="col-md-6">
                           <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
                             @if ($errors->has('email'))
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="phone" class="col-md-4 col-form-label text-md-end text-start">phone</label>
+                        <label for="phone" class="col-md-4 col-form-label text-md-end text-start">GSM: </label>
                         <div class="col-md-6">
                           <input type="phone" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone">
                             @if ($errors->has('phone'))
@@ -47,7 +47,7 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="streetnr" class="col-md-4 col-form-label text-md-end text-start">streetnr</label>
+                        <label for="streetnr" class="col-md-4 col-form-label text-md-end text-start">Straat + nummer: </label>
                         <div class="col-md-6">
                           <input type="streetnr" class="form-control @error('streetnr') is-invalid @enderror" id="streetnr" name="streetnr">
                             @if ($errors->has('streetnr'))
@@ -56,7 +56,7 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="city" class="col-md-4 col-form-label text-md-end text-start">city</label>
+                        <label for="city" class="col-md-4 col-form-label text-md-end text-start">Stad / gemeente: </label>
                         <div class="col-md-6">
                           <input type="city" class="form-control @error('city') is-invalid @enderror" id="city" name="city">
                             @if ($errors->has('city'))
@@ -65,7 +65,7 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="postalcode" class="col-md-4 col-form-label text-md-end text-start">Postcode</label>
+                        <label for="postalcode" class="col-md-4 col-form-label text-md-end text-start">Postcode: </label>
                         <div class="col-md-6">
                           <input type="postalcode" class="form-control @error('postalcode') is-invalid @enderror" id="postalcode" name="postalcode">
                             @if ($errors->has('postalcode'))
@@ -74,10 +74,10 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="youthorganisation" class="col-md-4 col-form-label text-md-end text-start">Youth Organization</label>
+                        <label for="youthorganisation" class="col-md-4 col-form-label text-md-end text-start">Jeugdbeweging: </label>
                         <div class="col-md-6">
                             <select class="form-control @error('youthorganisation') is-invalid @enderror" id="youthorganisation" name="youthorganisation">
-                                <option value="">Select Youth Organization</option>
+                                <option value="">Kies jeugdbeweging</option>
                                 @foreach ($youthorganisations as $organisation)
                                     <option value="{{ $organisation->id }}">{{ $organisation->name }}</option>
                                 @endforeach
@@ -88,7 +88,7 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="password" class="col-md-4 col-form-label text-md-end text-start">Password</label>
+                        <label for="password" class="col-md-4 col-form-label text-md-end text-start">Wachtwoord: </label>
                         <div class="col-md-6">
                           <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password">
                             @if ($errors->has('password'))
@@ -97,7 +97,7 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="password_confirmation" class="col-md-4 col-form-label text-md-end text-start">Confirm Password</label>
+                        <label for="password_confirmation" class="col-md-4 col-form-label text-md-end text-start">Bevestig wachtwoord: </label>
                         <div class="col-md-6">
                           <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
                         </div>

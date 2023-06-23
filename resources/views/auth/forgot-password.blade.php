@@ -11,7 +11,7 @@
                 <form action="{{ route('password.email') }}" method="post">
                     @csrf
                     <div class="mb-3 row">
-                        <label for="email" class="col-md-4 col-form-label text-md-end text-start">Email Address</label>
+                        <label for="email" class="col-md-4 col-form-label text-md-end text-start">Email</label>
                         <div class="col-md-6">
                           <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
                             @if ($errors->has('email'))
@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     <div class="mb-3 row text-center">
-                        <input type="submit" class="btn btn-primary col-md-2 offset-md-5" value="Send email">
+                        <input type="submit" class="btn btn-primary col-md-2 offset-md-5" value="Verstuur email">
                     </div>                  
                 </form>
             </div>

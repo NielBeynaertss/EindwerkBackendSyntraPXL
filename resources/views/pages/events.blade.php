@@ -15,13 +15,13 @@
 <div class="row justify-content-center mt-5">
     <div class="col-md-10">
         <div class="row">
-            <h2 class="text-center">Events</h2>
+            <h2 class="text-center">Evenementen</h2>
         </div>
         <hr>
         <div class="row mt-5">
             <div class="col d-flex justify-content-end">
                 <div class="col-2 d-flex justify-content-end ml-2">
-                    <button class="btn btn-primary" type="button" onclick="document.getElementById('proposeEventDialog').showModal()">Propose event</button>
+                    <button class="btn btn-primary" type="button" onclick="document.getElementById('proposeEventDialog').showModal()">Evenement voorstellen</button>
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
                 <div class="row">
                     <div class="row">
                         <div class="col">
-                            <label for="title">Event titel:</label><br><br>
+                            <label for="title">Evenement naam:</label><br><br>
                         </div>
                         <div class="col">
                             <input type="text" id="title" name="title" required><br><br>
@@ -104,8 +104,8 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit">Submit</button>
-                <button type="button" onclick="document.getElementById('proposeEventDialog').close()">Cancel</button>
+                <button type="submit">Bewaar</button>
+                <button type="button" onclick="document.getElementById('proposeEventDialog').close()">Annuleer</button>
             </form>            
         </dialog>
         

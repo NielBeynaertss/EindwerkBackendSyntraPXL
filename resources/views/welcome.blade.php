@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>YouthLink</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -50,7 +50,7 @@
 
                             <div class="ml-4">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Welcome to YouthLink! Our mission is to connect youthorganisations around the country and give them a platform to help each other out.
+                                    Welkom bij YouthLink! Onze missie is om jeugdorganisaties in het hele land met elkaar te verbinden en hen een platform te bieden om elkaar te helpen en makkelijker contact te maken met elkaar.
                                 </div>
                             </div>
                         </div>
@@ -62,7 +62,7 @@
 
                             <div class="ml-4">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    To get started go to the <a href="{{ route('register') }}">registration page (top right)</a> and create an account. Once submitted, you can already login but not view the whole functionality, our team will review your registration, once approved you will receive an email and get access to the full functionality of our application.
+                                    Om aan de slag te gaan, ga naar de <a href="{{ route('register') }}">registratiepagina (rechtsboven)</a> en maak een account aan. Zodra je je registratie hebt ingediend, kun je al inloggen maar heb je nog geen toegang tot de volledige functionaliteit. Ons team zal je registratie beoordelen en zodra deze is goedgekeurd, ontvang je een e-mail en krijg je toegang tot de volledige functionaliteit van onze applicatie.
                                 </div>
                             </div>
                         </div>

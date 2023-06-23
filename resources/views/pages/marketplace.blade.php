@@ -65,7 +65,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <label for="category">Category:</label><br><br>
+                            <label for="category">Categorie:</label><br><br>
                         </div>
                         <div class="col">
                             <select id="category" name="category" required>
@@ -109,12 +109,12 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <label for="typeOfTransaction">Type of Transaction:</label><br><br>
+                            <label for="typeOfTransaction">Verkopen / lenen:</label><br><br>
                         </div>
                         <div class="col">
                             <select id="typeOfTransaction" name="typeOfTransaction" required>
-                                <option value="Loan">Loan</option>
-                                <option value="Sell">Sell</option>
+                                <option value="Loan">Lenen</option>
+                                <option value="Sell">Verkopen</option>
                             </select><br><br>                                
                         </div>
                     </div>
@@ -159,8 +159,8 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit">Submit</button>
-                <button type="button" onclick="document.getElementById('createListingDialog').close()">Cancel</button>
+                <button type="submit">Bewaar</button>
+                <button type="button" onclick="document.getElementById('createListingDialog').close()">Annuleren</button>
             </form>
         </dialog>
 

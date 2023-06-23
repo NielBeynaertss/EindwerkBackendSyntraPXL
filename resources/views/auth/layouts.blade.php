@@ -22,8 +22,8 @@
                 <ul class="navbar-nav ms-auto">
                     @if (Auth::check())
                         <!-- Authenticated navbar links -->
-                        <li class="nav-item"><a class="nav-link" href="{{ route('marketplace') }}">Marketplace</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('events') }}">Events</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('marketplace') }}">Marktplaats</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('events') }}">Evenementen</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('forum') }}">Forum</a></li>
 
                         <li class="nav-item dropdown">
@@ -50,7 +50,7 @@
                             <a class="nav-link {{ (request()->is('login')) ? 'active' : '' }}" href="{{ route('login') }}">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ (request()->is('register')) ? 'active' : '' }}" href="{{ route('register') }}">Register</a>
+                            <a class="nav-link {{ (request()->is('register')) ? 'active' : '' }}" href="{{ route('register') }}">Registreren</a>
                         </li>
                     @endif
                 </ul>

@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col d-flex justify-content-between pb-3">
                     <button type="button" class="btn btn-secondary" onclick="window.history.back()">
-                        <i class="fa-solid fa-arrow-left"></i> Back
+                        <i class="fa-solid fa-arrow-left"></i> Terug
                     </button>
                     
                     <h2 class="text-center">{{ $event->title }}</h2>
@@ -17,9 +17,9 @@
                         <button type="submit" class="btn btn-danger">
                             <i class="fa-solid fa-star"></i> 
                             @if(in_array($event->id, $member->favourite_listings ?? []))
-                                Delete from Favorites
+                                Verwijder uit favorieten
                             @else
-                                Add to Favorites
+                                Voeg toe aan favorieten
                             @endif
                         </button>                        
                     </form>
@@ -31,11 +31,9 @@
                     <img src="{{ asset('event-images/' . $event->picture) }}" alt="Event Image" style="width: 400px; height: auto;">
                 </div>
             </div>
-            <p>Description: {{ $event->description }}</p>
-            <p>Location: {{ $event->location }}</p>
-            <p>Fee?: {{ $event->fee }}</p>
-            <p>Created At: {{ $event->created_at->format('d-m-y') }}</p>
-            <p>Created by: {{ $event->created_by }}</p>
+            <p>Beschrijving: {{ $event->description }}</p>
+            <p>Adres: {{ $event->location }}</p>
+            <p>Kost?: {{ $event->fee }}</p>
         </div>
     </div>
 @endsection

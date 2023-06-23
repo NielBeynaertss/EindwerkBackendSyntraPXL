@@ -1,6 +1,7 @@
 @extends('auth.layouts')
 
 @section('content')
+
 <style>
     dialog{
         width: 800px;
@@ -40,12 +41,12 @@
             @if (Auth::user()->profile_picture)
                 <button type="button" onclick="document.getElementById('profilePictureDialog').showModal()" class="profile_button">
                     <img src="{{ asset('profile-images/' . Auth::user()->profile_picture) }}" alt="Profile Picture" height="400px;">
-                    <span class="profile_button_text">Click to add/change profile picture</span>
+                    <span class="profile_button_text">Klik hier om profiel foto toe te voegen / te veranderen</span>
                 </button>
             @else
                 <button type="button" onclick="document.getElementById('profilePictureDialog').showModal()" class="profile_button">
                     <img src="{{ asset('profile-images/default-image.jpg')}}" alt="default profile picture" height="400px;">
-                    <span class="profile_button_text">Click to add/change profile picture</span>
+                    <span class="profile_button_text">Klik hier om profiel foto toe te voegen</span>
                 </button>
             @endif
         </div>
@@ -54,9 +55,9 @@
             <form action="{{ route('updateProfilePicture') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <input type="file" name="profile_picture"><br>
-                <button type="submit">Upload Profile Picture</button>
+                <button type="submit">Upload profiel foto</button>
             </form><br>             
-            <button type="button" onclick="document.getElementById('profilePictureDialog').close()">Close</button>
+            <button type="button" onclick="document.getElementById('profilePictureDialog').close()">Sluit</button>
         </dialog>
 
         <hr>
@@ -65,10 +66,10 @@
             <div class="card-header">
                 <div class="row ">
                     <div class="col">
-                        <p class="mt-3">User Information</p>
+                        <p class="mt-3">Gebruikers informatie</p>
                     </div>
                     <div class="col d-flex justify-content-end">
-                        <button type="button" onclick="document.getElementById('CredentialsDialog').showModal()">Show info</button>
+                        <button type="button" onclick="document.getElementById('CredentialsDialog').showModal()">Toon informatie</button>
                     </div>
                 </div>
                 
@@ -148,11 +149,11 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <button type="button" onclick="document.getElementById('changeCredentialsDialog').showModal()">Edit credentials</button>
-                    <button type="button" onclick="document.getElementById('changePasswordDialog').showModal()">Edit password</button>
+                    <button type="button" onclick="document.getElementById('changeCredentialsDialog').showModal()">Wijzig gebruikers informatie</button>
+                    <button type="button" onclick="document.getElementById('changePasswordDialog').showModal()">Wijzig wachtwoord</button>
                 </div>
                 <div class="col">
-                    <button type="button" onclick="document.getElementById('CredentialsDialog').close()">Close</button>
+                    <button type="button" onclick="document.getElementById('CredentialsDialog').close()">Sluit</button>
                 </div>
             </div>
 
@@ -222,8 +223,8 @@
                         </div>
                     </div>
 
-                    <button type="submit">Save</button>
-                    <button type="button" onclick="document.getElementById('changeCredentialsDialog').close()">Cancel</button>
+                    <button type="submit">Bewaar</button>
+                    <button type="button" onclick="document.getElementById('changeCredentialsDialog').close()">Annuleer</button>
                 </form>
             </dialog>
             
@@ -240,8 +241,8 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror               
 
-                    <button type="submit">Submit</button>
-                    <button type="button" onclick="document.getElementById('changePasswordDialog').close()">Cancel</button>
+                    <button type="submit">Bewaar</button>
+                    <button type="button" onclick="document.getElementById('changePasswordDialog').close()">Annuleer</button>
                 </form>
             </dialog>
 
