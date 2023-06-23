@@ -7,7 +7,6 @@
         <h2 class="text-center">Dashboard</h2>
         <hr>
         <div class="row">
-
             <div class="col">
                 <div class="card">
                     <h5 class="card-header">Favourite listings</h5>
@@ -20,7 +19,7 @@
                                 <div class="border mb-3">
                                     <h5 class="card-title">{{ $listing->title }}</h5>
                                     <p class="card-text">{{ $listing->description }}</p>
-                                    <a href="#" class="btn btn-primary">View Listing</a>
+                                    <a href="{{ route('listingDetail', ['id' => $listing->id]) }}" class="btn btn-primary">View Listing</a>
                                 </div>
                             @endforeach
                         @else
@@ -41,7 +40,7 @@
                                 <div class="border mb-3">
                                     <h5 class="card-title">{{ $event->title }}</h5>
                                     <p class="card-text">{{ $event->description }}</p>
-                                    <a href="#" class="btn btn-primary">View event</a>
+                                    <a href="{{ route('eventDetail', ['id' => $event->id]) }}" class="btn btn-primary">View event</a>
                                 </div>
                             @endforeach
                         @else
@@ -50,7 +49,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>    
 </div>
