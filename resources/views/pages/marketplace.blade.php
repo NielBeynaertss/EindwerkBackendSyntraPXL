@@ -1,6 +1,7 @@
 @extends('auth.layouts')
 
 @section('content')
+
 <style>
     #favoriteIcon {
         color: #888; /* Default color */
@@ -54,65 +55,100 @@
             <form action="{{ route('storeListing') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
-                    <div class="col">
-                        <label for="title">Item:</label><br><br>
-                        <label for="category">Category:</label><br><br>
-                        <label for="typeOfTransaction">Type of Transaction:</label><br><br>
-                        <label for="location">Stad / Gemeente:</label><br><br>
-                        <label for="postalcode">Postcode:</label><br><br>
-                        <label for="description">Beschrijving:</label><br><br>
+                    <div class="row">
+                        <div class="col">
+                            <label for="title">Item:</label><br><br>
+                        </div>
+                        <div class="col">
+                            <input type="text" id="title" name="title" required><br><br>                       
+                        </div>
                     </div>
-                    <div class="col">
-                        <input type="text" id="title" name="title" required><br><br>
-                        
-                        <select id="category" name="category" required>
-                            <option value="Antiek en Kunst">Antiek en Kunst</option>
-                            <option value="Audio, Tv en Foto">Audio, Tv en Foto</option>
-                            <option value="Auto diversen">Auto diversen</option>
-                            <option value="Auto's">Auto's</option>
-                            <option value="Auto-onderdelen">Auto-onderdelen</option>
-                            <option value="Boeken">Boeken</option>
-                            <option value="Caravans en Kamperen">Caravans en Kamperen</option>
-                            <option value="Cd's en Dvd's">Cd's en Dvd's</option>
-                            <option value="Computers en Software">Computers en Software</option>
-                            <option value="Contacten en Berichten">Contacten en Berichten</option>
-                            <option value="Diensten en Vakmensen">Diensten en Vakmensen</option>
-                            <option value="Dieren en Toebehoren">Dieren en Toebehoren</option>
-                            <option value="Doe-het-zelf en Bouw">Doe-het-zelf en Bouw</option>
-                            <option value="Elektronische apparatuur">Elektronische apparatuur</option>
-                            <option value="Fietsen en Brommers">Fietsen en Brommers</option>
-                            <option value="Games en Spelcomputers">Games en Spelcomputers</option>
-                            <option value="Handtassen en Accessoires">Handtassen en Accessoires</option>
-                            <option value="Hobby en Vrije tijd">Hobby en Vrije tijd</option>
-                            <option value="Huis en Inrichting">Huis en Inrichting</option>
-                            <option value="Immo">Immo</option>
-                            <option value="Kinderen en Baby's">Kinderen en Baby's</option>
-                            <option value="Kleding | Dames">Kleding | Dames</option>
-                            <option value="Kleding | Heren">Kleding | Heren</option>
-                            <option value="Motoren">Motoren</option>
-                            <option value="Muziek en Instrumenten">Muziek en Instrumenten</option>
-                            <option value="Postzegels en Munten">Postzegels en Munten</option>
-                            <option value="Sport en Fitness">Sport en Fitness</option>
-                            <option value="Telecommunicatie">Telecommunicatie</option>
-                            <option value="Tickets en Kaartjes">Tickets en Kaartjes</option>
-                            <option value="Tuin en Terras">Tuin en Terras</option>
-                            <option value="Vacatures">Vacatures</option>
-                            <option value="Vakantie">Vakantie</option>
-                            <option value="Verzamelen">Verzamelen</option>
-                            <option value="Watersport en Boten">Watersport en Boten</option>
-                            <option value="Zakelijke goederen">Zakelijke goederen</option>
-                        </select><br><br>
-                          
-                        <select id="typeOfTransaction" name="typeOfTransaction" required>
-                            <option value="Loan">Loan</option>
-                            <option value="Sell">Sell</option>
-                        </select><br><br>
-                        
-                        <input type="text" id="city" name="city" required><br><br>
-                        <input type="text" id="postalcode" name="postalcode" required><br><br>
-                        <textarea type="text" id="description" name="description" required></textarea><br><br>
-                        <input type="file" id="pictures" name="pictures[]" multiple>
-
+                    <div class="row">
+                        <div class="col">
+                            <label for="category">Category:</label><br><br>
+                        </div>
+                        <div class="col">
+                            <select id="category" name="category" required>
+                                <option value="Antiek en Kunst">Antiek en Kunst</option>
+                                <option value="Audio, Tv en Foto">Audio, Tv en Foto</option>
+                                <option value="Auto diversen">Auto diversen</option>
+                                <option value="Auto's">Auto's</option>
+                                <option value="Auto-onderdelen">Auto-onderdelen</option>
+                                <option value="Boeken">Boeken</option>
+                                <option value="Caravans en Kamperen">Caravans en Kamperen</option>
+                                <option value="Cd's en Dvd's">Cd's en Dvd's</option>
+                                <option value="Computers en Software">Computers en Software</option>
+                                <option value="Contacten en Berichten">Contacten en Berichten</option>
+                                <option value="Diensten en Vakmensen">Diensten en Vakmensen</option>
+                                <option value="Dieren en Toebehoren">Dieren en Toebehoren</option>
+                                <option value="Doe-het-zelf en Bouw">Doe-het-zelf en Bouw</option>
+                                <option value="Elektronische apparatuur">Elektronische apparatuur</option>
+                                <option value="Fietsen en Brommers">Fietsen en Brommers</option>
+                                <option value="Games en Spelcomputers">Games en Spelcomputers</option>
+                                <option value="Handtassen en Accessoires">Handtassen en Accessoires</option>
+                                <option value="Hobby en Vrije tijd">Hobby en Vrije tijd</option>
+                                <option value="Huis en Inrichting">Huis en Inrichting</option>
+                                <option value="Immo">Immo</option>
+                                <option value="Kinderen en Baby's">Kinderen en Baby's</option>
+                                <option value="Kleding | Dames">Kleding | Dames</option>
+                                <option value="Kleding | Heren">Kleding | Heren</option>
+                                <option value="Motoren">Motoren</option>
+                                <option value="Muziek en Instrumenten">Muziek en Instrumenten</option>
+                                <option value="Postzegels en Munten">Postzegels en Munten</option>
+                                <option value="Sport en Fitness">Sport en Fitness</option>
+                                <option value="Telecommunicatie">Telecommunicatie</option>
+                                <option value="Tickets en Kaartjes">Tickets en Kaartjes</option>
+                                <option value="Tuin en Terras">Tuin en Terras</option>
+                                <option value="Vacatures">Vacatures</option>
+                                <option value="Vakantie">Vakantie</option>
+                                <option value="Verzamelen">Verzamelen</option>
+                                <option value="Watersport en Boten">Watersport en Boten</option>
+                                <option value="Zakelijke goederen">Zakelijke goederen</option>
+                            </select><br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="typeOfTransaction">Type of Transaction:</label><br><br>
+                        </div>
+                        <div class="col">
+                            <select id="typeOfTransaction" name="typeOfTransaction" required>
+                                <option value="Loan">Loan</option>
+                                <option value="Sell">Sell</option>
+                            </select><br><br>                                
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="location">Stad / Gemeente:</label><br><br>
+                        </div>
+                        <div class="col">
+                            <input type="text" id="city" name="city" required><br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="postalcode">Postcode:</label><br><br>
+                        </div>
+                        <div class="col">
+                            <input type="text" id="postalcode" name="postalcode" required><br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="description">Beschrijving:</label><br><br>
+                        </div>
+                        <div class="col">
+                            <textarea type="text" id="description" name="description" required></textarea><br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="pictures">Afbeeldingen:</label><br><br>
+                        </div>
+                        <div class="col">
+                            <input type="file" id="pictures" name="pictures[]" multiple>
+                        </div>
                     </div>
                 </div>
                 <button type="submit">Submit</button>
