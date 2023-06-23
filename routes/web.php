@@ -62,5 +62,4 @@ Route::controller(EventController::class)->group(function() {
 });
 Route::controller(ForumController::class)->group(function() {
     Route::get('/forum', 'showForumPage')->name('forum');
-
 });
