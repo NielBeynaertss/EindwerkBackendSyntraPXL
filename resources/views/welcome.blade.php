@@ -3,6 +3,10 @@
 <head>
 <link rel="stylesheet" href="{{ asset('css/welcome.blade.css') }}">
 </head>
+<div class="header">
+<h1>Welkom op de homepagina!</h1>
+<p>Hieronder vind je de verschillende pagina's en wat ze doen, klik op een icoontje om er naar toe te gaan!</p>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-md-3">
@@ -14,6 +18,10 @@
                     <p>Hier kan je op zoek gaan naar materiaal om te lenen of huren. Je kan ook je eigen zoekertje plaatsen!</p>
                 </div>
                 <a href="{{ route('marketplace')}}">
+                <div class="clickhere">
+                    <p>klik hier!</p>
+                    <i class="fa-solid fa-angles-down"></i>
+                </div>
                 <div class ="icon">
                     <i class="fa-solid fa-magnifying-glass"></i> 
                 </div>
@@ -29,6 +37,10 @@
                     <p>Op deze pagina kan je opkomende events en hun informatie zien. Wil je zelf een evenement promoten? Dat kan hier ook!</p>
                 </div>
                 <a href="{{ route('events')}}">
+                <div class="clickhere">
+                    <p>klik hier!</p>
+                    <i class="fa-solid fa-angles-down"></i>
+                </div>
                 <div class ="icon">
                     <i class="fa-regular fa-calendar-days"></i>
                 </div>
@@ -43,6 +55,10 @@
                     <p>Heb je een vraag in verband met een jeugdvereniging gerelateerd onderwerp? Stel ze hier! Je kan hier ook deelnemen aan openlijke conversaties met andere gebruikers.</p>
                 </div>
                 <a href="{{ route('forum')}}">
+                <div class="clickhere">
+                    <p>klik hier!</p>
+                    <i class="fa-solid fa-angles-down"></i>
+                </div>
                 <div class ="icon">
                 <i class="fa-solid fa-users"></i>
                 </div>
@@ -57,6 +73,10 @@
                     <p>Vind hier de events en zoekertjes die je hebt aangeduid als favoriet.</p>
                 </div>
                 <a href="{{ route('dashboard')}}">
+                <div class="clickhere">
+                    <p>klik hier!</p>
+                    <i class="fa-solid fa-angles-down"></i>
+                </div>
                 <div class ="icon">
                     <i class="fa-solid fa-star"></i>
                 </div>

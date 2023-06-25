@@ -4,3 +4,10 @@ body{
     font-family: 'Nunito', sans-serif;
     background-color: #EBF2FA;
 }
+.navbar{
+    background-color: #2C5F2D;
+    font-weight: bold;
+}
+.nav-link, .navbar-brand{
+    color: white;
+}

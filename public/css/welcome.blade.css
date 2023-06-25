@@ -1,14 +1,25 @@
 .infocard{
-    background-color: red;
     margin-top: 20%;
     color: white;
+    background-color: #97BC62;
 }
 h2{
     text-align: center;
 }
-
-.events, .forum, .listings,.favorites{
-    background-color: #679436;
+.header{
+    text-align: center;
+    margin-top: 5%;
+}
+.clickhere{
+    color: white;
+    text-align: center;
+    padding-bottom: 2%;
+}
+.clickhere:hover{
+    color:darkgreen;
+}
+.clickhere:hover + .icon{
+    background-color: darkgreen;
 }
 
 .description{
@@ -26,5 +37,8 @@ h2{
     color: black;
 }
 .description{
-    min-height: 400px;
+    min-height: 300px;
+}
+a{
+    text-decoration: none;
 }
