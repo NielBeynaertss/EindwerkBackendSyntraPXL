@@ -49,7 +49,7 @@
                     <div class="mb-3 row">
                         <label for="streetnr" class="col-md-4 col-form-label text-md-end text-start">Straat + nummer: </label>
                         <div class="col-md-6">
-                          <input type="streetnr" class="form-control @error('streetnr') is-invalid @enderror" id="streetnr" name="streetnr">
+                          <input type="text" class="form-control @error('streetnr') is-invalid @enderror" id="streetnr" name="streetnr">
                             @if ($errors->has('streetnr'))
                                 <span class="text-danger">{{ $errors->first('streetnr') }}</span>
                             @endif
@@ -67,7 +67,7 @@
                     <div class="mb-3 row">
                         <label for="postalcode" class="col-md-4 col-form-label text-md-end text-start">Postcode: </label>
                         <div class="col-md-6">
-                          <input type="postalcode" class="form-control @error('postalcode') is-invalid @enderror" id="postalcode" name="postalcode">
+                          <input type="number" pattern="{4}"class="form-control @error('postalcode') is-invalid @enderror" id="postalcode" name="postalcode">
                             @if ($errors->has('postalcode'))
                                 <span class="text-danger">{{ $errors->first('postalcode') }}</span>
                             @endif
