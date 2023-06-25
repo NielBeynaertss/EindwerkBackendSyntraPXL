@@ -160,6 +160,15 @@
         }
     }
     </style>
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+            <div class="row">
+                <h2 class="text-center">Forum</h2>
+            </div>
+            <hr>
+        </div>
+    </div>
     
     <nav class="v-navbar navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
