@@ -17,3 +17,7 @@ body{
 .btn-primary:hover{
     background-color: #204621;
 }
+dialog{
+    border-radius: 2%;
+    border-color: #2c5f2dce;
+}

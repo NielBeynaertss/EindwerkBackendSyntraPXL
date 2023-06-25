@@ -2,5 +2,9 @@
     color: black;
 }
 h2{
-    padding-top: 10%;
+    padding-top: 5%;
+    text-align: center;
+}
+a{
+    text-decoration: none;
 }

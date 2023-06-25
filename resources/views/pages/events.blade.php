@@ -31,88 +31,62 @@
         
         <!--Create listing popup-->
         <dialog id="proposeEventDialog">
-            <form action="{{ route('storeEvent') }}" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="row">
-                    <div class="row">
-                        <div class="col">
-                            <label for="title">Evenement naam:</label><br><br>
-                        </div>
-                        <div class="col">
-                            <input type="text" id="title" name="title" required><br><br>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <label for="location">Locatie:</label><br><br>
-                        </div>
-                        <div class="col">
-                            <input type="text" id="location" name="location" required><br><br>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <label for="postalcode">Postcode:</label><br><br>
-                        </div>
-                        <div class="col">
-                            <input type="text" id="postalcode" name="postalcode" required><br><br>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <label for="date">Datum:</label><br><br>
-                        </div>
-                        <div class="col">
-                            <input type="date" id="date" name="date" required><br><br>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <label for="starttime">Startuur:</label><br><br>
-                        </div>
-                        <div class="col">
-                            <input type="time" id="starttime" name="starttime" required><br><br>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <label for="endtime">Einduur:</label><br><br>
-                        </div>
-                        <div class="col">
-                            <input type="time" id="endtime" name="endtime" required><br><br>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <label for="fee">Kostprijs:</label><br><br>
-                        </div>
-                        <div class="col">
-                            <input type="number" step="0.5" id="fee" name="fee" required><br><br>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <label for="description">Beschrijving:</label><br><br>
-                        </div>
-                        <div class="col">
-                            <textarea id="description" name="description" required></textarea><br><br>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <label for="picture">Afbeelding:</label><br><br>
-                        </div>
-                        <div class="col">
-                            <input type="file" id="picture" name="picture"><br><br>
-                        </div>
-                    </div>
-                </div>
-                <button type="submit">Bewaar</button>
-                <button type="button" onclick="document.getElementById('proposeEventDialog').close()">Annuleer</button>
-            </form>            
-        </dialog>
-        
-
+        <form class="form" action="{{ route('storeEvent') }}" method="post" enctype="multipart/form-data">
+    @csrf
+    <div class="row">
+        <div class="col-md-6">
+            <label for="title" class="form-label">Evenement naam:</label>
+            <input type="text" id="title" name="title" class="form-control" required>
+        </div>
+        <div class="col-md-6">
+            <label for="location" class="form-label">Locatie:</label>
+            <input type="text" id="location" name="location" class="form-control" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="postalcode" class="form-label">Postcode:</label>
+            <input type="text" id="postalcode" name="postalcode" class="form-control" required>
+        </div>
+        <div class="col-md-6">
+            <label for="date" class="form-label">Datum:</label>
+            <input type="date" id="date" name="date" class="form-control" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="starttime" class="form-label">Startuur:</label>
+            <input type="time" id="starttime" name="starttime" class="form-control" required>
+        </div>
+        <div class="col-md-6">
+            <label for="endtime" class="form-label">Einduur:</label>
+            <input type="time" id="endtime" name="endtime" class="form-control" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="fee" class="form-label">Kostprijs:</label>
+            <input type="number" step="0.5" id="fee" name="fee" class="form-control" required>
+        </div>
+        <div class="col-md-6">
+            <label for="description" class="form-label">Beschrijving:</label>
+            <textarea id="description" name="description" class="form-control" required></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="picture" class="form-label">Afbeelding:</label>
+            <input type="file" id="picture" name="picture" class="form-control">
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col">
+            <button type="submit" class="btn btn-primary">Bewaar</button>
+            <button type="button" class="btn btn-secondary" onclick="document.getElementById('proposeEventDialog').close()">Annuleer</button>
+        </div>
+    </div>
+</form>
+</dialog>
         <div class="row mt-3">
             @foreach($events as $event)
                 <div class="col-lg-6 mb-3">
