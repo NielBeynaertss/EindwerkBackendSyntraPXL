@@ -61,7 +61,7 @@ class ListingController extends Controller
             'category' => 'required',
             'typeOfTransaction' => 'required',
             'price' => 'required',
-            'postalcode' => 'required',
+            'postalcode' => ['required', 'regex:/^\d{4}$/'],
             'pictures' => 'required|array', // Add validation rule for the pictures field
             'pictures.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Add validation rule for each picture in the array
         ]);

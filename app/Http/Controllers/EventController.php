@@ -29,7 +29,7 @@ class EventController extends Controller
         $request->validate([
             'title' => 'required',
             'location' => 'required',
-            'postalcode' => 'required',
+            'postalcode' => ['required', 'regex:/^\d{4}$/'],
             'date' => 'required',
             'starttime' => 'required',
             'endtime' => 'required',

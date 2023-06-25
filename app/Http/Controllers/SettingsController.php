@@ -76,10 +76,5 @@ class SettingsController extends Controller
     
         // Redirect back to the settings page or any other desired location
         return redirect()->back();
-    }
-    
-    
-    
-    
-
+    } 
 }

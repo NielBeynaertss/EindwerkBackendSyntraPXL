@@ -36,7 +36,7 @@ class LoginRegisterController extends Controller
             'phone' => 'required|string|max:250',
             'streetnr' => 'required|string|max:250',
             'city' => 'required|string|max:250',
-            'postalcode' => 'required|string|max:250',
+            'postalcode' => ['required', 'regex:/^\d{4}$/'],
             'youthorganisation' => 'required',
             'password' => 'required|min:8|confirmed'
         ]);
