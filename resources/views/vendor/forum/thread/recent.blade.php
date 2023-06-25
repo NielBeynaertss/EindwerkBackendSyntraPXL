@@ -1,7 +1,7 @@
 @extends ('forum::master', ['thread' => null, 'breadcrumbs_append' => [trans('forum::threads.recent')]])
 
 @section ('content')
-
+<link rel="stylesheet" href="{{ asset('css/forum.css') }}">
     <div class="row justify-content-center mt-5">
         <div class="col-md-10">
             <div class="row">
@@ -12,26 +12,22 @@
     </div>
     <nav class="v-navbar navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="{{ url(config('forum.web.router.prefix')) }}">Forum</a>
-            <button class="navbar-toggler" type="button" :class="{ collapsed: isCollapsed }" @click="isCollapsed = ! isCollapsed">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="collapse navbar-collapse" :class="{ show: !isCollapsed }">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url(config('forum.web.router.prefix')) }}">{{ trans('forum::general.index') }}</a>
+                        <a class="nav-link forum-nav-link" href="{{ url(config('forum.web.router.prefix')) }}">{{ trans('forum::general.index') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('forum.recent') }}">{{ trans('forum::threads.recent') }}</a>
+                        <a class="nav-link forum-nav-link" href="{{ route('forum.recent') }}">{{ trans('forum::threads.recent') }}</a>
                     </li>
                     @auth
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('forum.unread') }}">{{ trans('forum::threads.unread_updated') }}</a>
+                            <a class="nav-link forum-nav-link" href="{{ route('forum.unread') }}">{{ trans('forum::threads.unread_updated') }}</a>
                         </li>
                     @endauth
                     @can ('moveCategories')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('forum.category.manage') }}">{{ trans('forum::general.manage') }}</a>
+                            <a class="nav-link forum-nav-link" href="{{ route('forum.category.manage') }}">{{ trans('forum::general.manage') }}</a>
                         </li>
                     @endcan
                 </ul>

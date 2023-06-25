@@ -1,6 +1,7 @@
 @extends ('forum::master', ['thread' => null, 'breadcrumbs_append' => [$thread->title], 'thread_title' => $thread->title])
 
 @section ('content')
+<link rel="stylesheet" href="{{ asset('css/forum.css') }}">
     <div id="thread" class="v-thread">
         <div class="d-flex flex-column flex-md-row justify-content-between">
             <h2 class="flex-grow-1">{{ $thread->title }}</h2>
