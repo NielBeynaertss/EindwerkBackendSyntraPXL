@@ -27,9 +27,40 @@
                     <img src="{{ asset('event-images/' . $event->picture) }}" alt="Event Image" style="width: 400px; height: auto;">
                 </div>
             </div>
-            <p>Beschrijving: {{ $event->description }}</p>
-            <p>Adres: {{ $event->location }}</p>
-            <p>Kost?: {{ $event->fee }}</p>
+
+            <div class="row d-flex justify-content-center mt-5">
+                <div class="col-6">
+                    <h5><u>Beschrijving:</u> </h5>
+                    <p class="bg-light">{{ $event->description }}</p>
+                </div>
+                <div class="row mt-5 border bg-light">
+                    <div class="text-center">
+                        <h5><u>Praktische informatie:</u></h5>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 text-center">
+                            <p><b>Datum: </b> {{ $event->date }}</p>
+                        </div>
+                        <div class="col-4 text-center">
+                            <p><b>Start om:</b> {{ $event->starttime }}</p>
+                        </div>
+                        <div class="col-4 text-center">
+                            <p><b>Einde om:</b> {{ $event->endtime }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 text-center">
+                            <p><b>Inkom:</b> €{{ $event->fee }}</p>
+                        </div>
+                        <div class="col-4 text-center">
+                            <p><b>Adres:</b> {{ $event->location }}</p>
+                        </div>
+                        <div class="col-4 text-center">
+                            <p><b>Georganiseerd door:</b> {{ $event->created_by }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

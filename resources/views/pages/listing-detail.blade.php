@@ -54,11 +54,28 @@
                 </div>
             </div>
 
-            <p>Beschrijving: {{ $listing->description }}</p>
-            <p>Adres: {{ $listing->location }}</p>
-            <p>Verkoop / Lenen?: {{ $listing->type_of_transaction }}</p>
-            <p>Prijs: €{{ $listing->price }}</p>
-            <p>Postcode: {{ $listing->postalcode }}</p> 
+            <div class="row d-flex justify-content-center mt-5">
+                <div class="col-6">
+                    <h5><u>Beschrijving:</u> </h5>
+                    <p class="bg-light">{{ $listing->description }}</p>
+                </div>
+                <div class="row mt-5 border bg-light">
+                    <div class="text-center">
+                        <h5><u>Praktische informatie:</u></h5>
+                    </div>
+                    <div class="col-6 text-center">
+                        <p><b>Verkoop / Lenen?:</b> {{ $listing->type_of_transaction }}</p>
+                        <p><b>Prijs:</b> €{{ $listing->price }}</p>
+                        <p><b>Categorie:</b> {{ $listing->category }}</p>
+                    </div>
+                    <div class="col-6 text-center">
+                        <p><b>Stad / gemeente:</b> {{ $listing->city }}</p>
+                        <p><b>Postcode:</b> {{ $listing->postalcode }}</p> 
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     </div>
 @endsection
