@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
 body{
     font-family: 'Nunito', sans-serif;
-}
-.infocard{
-    background-color:  black;
+    background-color: #EBF2FA;
 }
