@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>YouthLink</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @yield('head')
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="{{ URL('/') }}">YouthLink</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,9 +22,9 @@
                 <ul class="navbar-nav ms-auto">
                     @if (Auth::check())
                         <!-- Authenticated navbar links -->
-                        <li class="nav-item"><a class="nav-link" href="{{ route('marketplace') }}">Marktplaats</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('events') }}">Evenementen</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('forum') }}">Forum</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('marketplace') }}"><i class="fa-solid fa-magnifying-glass"></i>  Marktplaats</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('events') }}"><i class="fa-regular fa-calendar-days"></i>  Evenementen</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('forum') }}"> <i class="fa-solid fa-users"></i>  Forum</a></li>
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

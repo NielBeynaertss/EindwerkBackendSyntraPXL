@@ -11,6 +11,9 @@
         object-fit: cover;
     }
 </style>
+<head>
+<link rel="stylesheet" href="{{ asset('css/events.blade.css') }}">
+</head>
 
 <div class="row justify-content-center mt-5">
     <div class="col-md-10">
@@ -21,7 +24,7 @@
         <div class="row mt-5">
             <div class="col d-flex justify-content-end">
                 <div class="col-2 d-flex justify-content-end ml-2">
-                    <button class="btn btn-primary" type="button" onclick="document.getElementById('proposeEventDialog').showModal()">Evenement voorstellen</button>
+                    <button class="btn btn-primary btn-make-event" type="button" onclick="document.getElementById('proposeEventDialog').showModal()">Evenement voorstellen</button>
                 </div>
             </div>
         </div>
