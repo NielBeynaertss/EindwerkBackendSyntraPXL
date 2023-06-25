@@ -18,9 +18,6 @@
             <div class="collapse navbar-collapse" :class="{ show: !isCollapsed }">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link forum-nav-link" href="{{ url(config('forum.web.router.prefix')) }}">{{ trans('forum::general.index') }}</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link forum-nav-link" href="{{ route('forum.recent') }}">{{ trans('forum::threads.recent') }}</a>
                     </li>
                     @auth

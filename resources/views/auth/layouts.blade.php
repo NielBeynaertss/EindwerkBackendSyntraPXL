@@ -25,7 +25,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{ URL('/') }}"><i class="fa-solid fa-house"></i></i>  Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('marketplace') }}"><i class="fa-solid fa-magnifying-glass"></i>  Marktplaats</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('events') }}"><i class="fa-regular fa-calendar-days"></i>  Evenementen</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('forum') }}"> <i class="fa-solid fa-users"></i>  Forum</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('forum.recent') }}"> <i class="fa-solid fa-users"></i>  Forum</a></li>
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

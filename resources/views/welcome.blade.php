@@ -55,7 +55,7 @@
                 <div class="description">
                     <p>Heb je een vraag in verband met een jeugdvereniging gerelateerd onderwerp? Stel ze hier! Je kan hier ook deelnemen aan openlijke conversaties met andere gebruikers.</p>
                 </div>
-                <a href="{{ route('forum')}}">
+                <a href="{{ route('forum.recent')}}">
                 <div class="clickhere">
                     <p>klik hier!</p>
                     <i class="fa-solid fa-angles-down"></i>
