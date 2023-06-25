@@ -183,11 +183,11 @@
                             <a class="nav-link forum-nav-link" href="{{ route('forum.unread') }}">{{ trans('forum::threads.unread_updated') }}</a>
                         </li>
                     @endauth
-                    @can ('moveCategories')
+                    @if (auth()->user()->role_id == 1)
                         <li class="nav-item">
                             <a class="nav-link forum-nav-link" href="{{ route('forum.category.manage') }}">{{ trans('forum::general.manage') }}</a>
                         </li>
-                    @endcan
+                    @endif
                 </ul>
             </div>
         </div>

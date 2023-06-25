@@ -12,6 +12,9 @@
     </div>
     <nav class="v-navbar navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
+            <button class="navbar-toggler" type="button" :class="{ collapsed: isCollapsed }" @click="isCollapsed = ! isCollapsed">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" :class="{ show: !isCollapsed }">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
@@ -22,11 +25,11 @@
                             <a class="nav-link forum-nav-link" href="{{ route('forum.unread') }}">{{ trans('forum::threads.unread_updated') }}</a>
                         </li>
                     @endauth
-                    @can ('moveCategories')
+                    @if (auth()->user()->role_id == 1)
                         <li class="nav-item">
                             <a class="nav-link forum-nav-link" href="{{ route('forum.category.manage') }}">{{ trans('forum::general.manage') }}</a>
                         </li>
-                    @endcan
+                    @endif
                 </ul>
             </div>
         </div>
