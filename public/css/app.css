@@ -11,3 +11,9 @@ body{
 .nav-link, .navbar-brand{
     color: white;
 }
+.btn-primary{
+    background-color: #2C5F2D;
+}
+.btn-primary:hover{
+    background-color: #204621;
+}
