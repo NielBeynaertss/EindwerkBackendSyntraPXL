@@ -26,7 +26,7 @@
 
 
         <div class="row">
-            <h2 class="text-center">Marketplace</h2>
+            <h2 class="text-center">Marktplaats</h2>
         </div>
         <hr>
         <div class="row mt-5">
