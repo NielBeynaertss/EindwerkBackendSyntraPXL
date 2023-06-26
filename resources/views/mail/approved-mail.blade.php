@@ -14,7 +14,7 @@
             <p>Bij deze willen we u meedelen dat uw account approved is en u vanaf nu toegang heeft tot de volledige functionaliteit van de website.</p>
             <p>Als u vragen heeft, neem dan gerust contact met ons op.</p>
             <p>Met vriendelijke groet,</p>
-            <p>Uw organisatie</p>
+            <p>YouthLink</p>
         </div>
     </div>
 </body>

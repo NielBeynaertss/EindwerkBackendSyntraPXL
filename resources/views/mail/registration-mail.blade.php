@@ -13,7 +13,7 @@
             <p>Bedankt voor uw registratie op onze website. We waarderen uw interesse.</p>
             <p>Als u vragen heeft, neem dan gerust contact met ons op.</p>
             <p>Met vriendelijke groet,</p>
-            <p>Uw organisatie</p>
+            <p>YouthLink</p>
         </div>
     </div>
 </body>

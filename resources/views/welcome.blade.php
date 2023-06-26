@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ asset('css/welcome.blade.css') }}">
 </head>
 <div class="header">
-<h1>Welkom op de homepagina!</h1>
+<h1>Welkom bij YouthLink!</h1>
 <p>Hieronder vind je de verschillende pagina's en wat ze doen, klik op een icoontje om er naar toe te gaan!</p>
 <p>Let op, de meeste functionaliteiten zijn pas beschikbaar eens je registratie goedgekeurd is. Houd je mailbox de komende dagen in de gaten voor een bevestiging.</p>
 </div>
