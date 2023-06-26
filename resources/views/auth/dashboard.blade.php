@@ -10,12 +10,9 @@
             <div class="col">
                 <div class="card">
                     <h5 class="card-header">Favoriete zoekertjes</h5>
-                    <div class="card-body" style="height: 500px; overflow-y: scroll;">
-                        @php
-                            $favouriteListings = json_decode(Auth::user()->favourite_listings);
-                        @endphp
-                        @if ($favouriteListings && count($favouriteListings) > 0)
-                            @foreach($favouriteListings as $listingId)
+                    <div class="card-body" style="height: 500px; overflow-y:scroll;">
+                        @if (Auth::user()->favourite_listings)
+                            @foreach(json_decode(Auth::user()->favourite_listings) as $listingId)
                                 @php
                                     $listing = App\Models\Listing::find($listingId);
                                 @endphp
@@ -29,7 +26,6 @@
                             <p>Je hebt nog geen favoriete zoekertjes</p>
                         @endif
                     </div>
-                    
                 </div>
             </div>
             <div class="col">
