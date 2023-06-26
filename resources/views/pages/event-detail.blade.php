@@ -34,7 +34,7 @@
                     <p class="bg-light">{{ $event->description }}</p>
                 </div>
                 <div class="row mt-5 border bg-light">
-                    <div class="text-center">
+                    <div class="text-center pt-3">
                         <h5><u>Praktische informatie:</u></h5>
                     </div>
                     <div class="row">

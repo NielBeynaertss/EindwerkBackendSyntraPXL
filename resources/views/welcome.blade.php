@@ -4,13 +4,13 @@
 <link rel="stylesheet" href="{{ asset('css/welcome.blade.css') }}">
 </head>
 <div class="header">
-<h1>Welkom bij YouthLink!</h1>
+<h1>Welkom bij YouthConnect!</h1>
 <p>Hieronder vind je de verschillende pagina's en wat ze doen, klik op een icoontje om er naar toe te gaan!</p>
 <p>Let op, de meeste functionaliteiten zijn pas beschikbaar eens je registratie goedgekeurd is. Houd je mailbox de komende dagen in de gaten voor een bevestiging.</p>
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-lg-3">
             <div class="rounded p-4 infocard listings">
                 <h2>Zoekertjes</h2> 
                 <hr>
@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-lg-3">
             <div class="rounded p-4 infocard events">
                 <h2>Evenementen</h2>
                 <hr>
@@ -48,7 +48,7 @@
                 </a>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-lg-3">
             <div class="rounded p-4 infocard forum">
                 <h2>Forum</h2>
                 <hr>
@@ -66,7 +66,7 @@
                 </a>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-lg-3">
             <div class="rounded p-4 infocard favorites">
                 <h2>Favorieten</h2>
                 <hr>

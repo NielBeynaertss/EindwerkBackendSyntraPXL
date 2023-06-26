@@ -69,7 +69,7 @@
                         <p class="mt-3">Gebruikers informatie</p>
                     </div>
                     <div class="col d-flex justify-content-end">
-                        <button type="button" onclick="document.getElementById('CredentialsDialog').showModal()">Toon informatie</button>
+                        <button type="button" onclick="document.getElementById('CredentialsDialog').showModal()" class="btn btn-primary">Toon informatie</button>
                     </div>
                 </div>
                 
@@ -149,11 +149,11 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <button type="button" onclick="document.getElementById('changeCredentialsDialog').showModal()">Wijzig gebruikers informatie</button>
-                    <button type="button" onclick="document.getElementById('changePasswordDialog').showModal()">Wijzig wachtwoord</button>
+                    <button type="button" onclick="document.getElementById('changeCredentialsDialog').showModal()" class="btn btn-primary">Wijzig gebruikers informatie</button>
+                    <button type="button" onclick="document.getElementById('changePasswordDialog').showModal()" class="btn btn-primary mt-3">Wijzig wachtwoord</button>
                 </div>
                 <div class="col">
-                    <button type="button" onclick="document.getElementById('CredentialsDialog').close()">Sluit</button>
+                    <button type="button" onclick="document.getElementById('CredentialsDialog').close()" class="btn btn-secondary">Sluit</button>
                 </div>
             </div>
 
@@ -166,65 +166,65 @@
             <dialog id="changeCredentialsDialog">
                 <form action="{{ route('updateCredentials') }}" method="post">
                     @csrf
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col-md">
-                            <label for="lastname">Achternaam:</label>
+                            <label for="lastname" class="form-label">Achternaam:</label>
                         </div>
                         <div class="col">
-                            <input type="text" name="lastname" value="{{ Auth::user()->lastname }}" required>
+                            <input type="text" name="lastname" value="{{ Auth::user()->lastname }}" class="form-control" required>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col-md">
-                            <label for="firstname">Voornaam:</label>
+                            <label for="firstname" class="form-label">Voornaam:</label>
                         </div>
                         <div class="col">
-                            <input type="text" name="firstname" value="{{ Auth::user()->firstname }}" required>
+                            <input type="text" name="firstname" value="{{ Auth::user()->firstname }}" class="form-control" required>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col-md">
-                            <label for="email">Email adress:</label>
+                            <label for="email" class="form-label">Email adres:</label>
                         </div>
                         <div class="col">
-                            <input type="text" name="email" value="{{ Auth::user()->email }}" required>
+                            <input type="email" name="email" value="{{ Auth::user()->email }}" class="form-control" required>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col-md">
-                            <label for="phone">GSM:</label>
+                            <label for="phone" class="form-label">GSM:</label>
                         </div>
                         <div class="col">
-                            <input type="text" name="phone" value="{{ Auth::user()->phone }}" required>
+                            <input type="text" name="phone" value="{{ Auth::user()->phone }}" class="form-control" required>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col-md">
-                            <label for="streetnr">Straat + nummer:</label>
+                            <label for="streetnr" class="form-label">Straat + nummer:</label>
                         </div>
                         <div class="col">
-                            <input type="text" name="streetnr" value="{{ Auth::user()->streetnr }}" required>
+                            <input type="text" name="streetnr" value="{{ Auth::user()->streetnr }}" class="form-control" required>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col-md">
-                            <label for="city">Stad / gemeente:</label>
+                            <label for="city" class="form-label">Stad / gemeente:</label>
                         </div>
                         <div class="col">
-                            <input type="text" name="city" value="{{ Auth::user()->city }}" required>
+                            <input type="text" name="city" value="{{ Auth::user()->city }}" class="form-control" required>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col-md">
-                            <label for="postalcode">Postcode:</label>
+                            <label for="postalcode" class="form-label">Postcode:</label>
                         </div>
                         <div class="col">
-                            <input type="text" name="postalcode" value="{{ Auth::user()->postalcode }}" required>
+                            <input type="text" name="postalcode" value="{{ Auth::user()->postalcode }}" class="form-control" required>
                         </div>
                     </div>
-
-                    <button type="submit">Bewaar</button>
-                    <button type="button" onclick="document.getElementById('changeCredentialsDialog').close()">Annuleer</button>
+            
+                    <button type="submit" class="btn btn-primary">Bewaar</button>
+                    <button type="button" onclick="document.getElementById('changeCredentialsDialog').close()" class="btn btn-secondary">Annuleer</button>
                 </form>
             </dialog>
             
@@ -232,19 +232,24 @@
             <dialog id="changePasswordDialog">
                 <form action="{{ route('updatePassword') }}" method="post">
                     @csrf
-                    <label for="password">Nieuw paswoord: </label>
-                    <input type="password" id="password" name="password"><br><br>
-
-                    <label for="password">Bevestig paswoord: </label>
-                    <input type="password" id="password_confirmation" name="password_confirmation" required>
-                    @error('password')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror               
-
-                    <button type="submit">Bewaar</button>
-                    <button type="button" onclick="document.getElementById('changePasswordDialog').close()">Annuleer</button>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Nieuw paswoord:</label>
+                        <input type="password" id="password" name="password" class="form-control">
+                    </div>
+            
+                    <div class="mb-3">
+                        <label for="password_confirmation" class="form-label">Bevestig paswoord:</label>
+                        <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" required>
+                        @error('password')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+            
+                    <button type="submit" class="btn btn-primary">Bewaar</button>
+                    <button type="button" onclick="document.getElementById('changePasswordDialog').close()" class="btn btn-secondary">Annuleer</button>
                 </form>
             </dialog>
+            
 
         </div>
 

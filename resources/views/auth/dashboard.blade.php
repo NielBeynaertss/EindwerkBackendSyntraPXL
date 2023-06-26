@@ -7,7 +7,7 @@
         <h2 class="text-center">Dashboard</h2>
         <hr>
         <div class="row">
-            <div class="col">
+            <div class="col-lg">
                 <div class="card">
                     <h5 class="card-header">Favoriete zoekertjes</h5>
                     <div class="card-body" style="height: 500px; overflow-y:scroll;">

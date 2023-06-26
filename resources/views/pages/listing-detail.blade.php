@@ -55,12 +55,12 @@
             </div>
 
             <div class="row d-flex justify-content-center mt-5">
-                <div class="col-6">
+                <div class="col-6 pt-3">
                     <h5><u>Beschrijving:</u> </h5>
                     <p class="bg-light">{{ $listing->description }}</p>
                 </div>
                 <div class="row mt-5 border bg-light">
-                    <div class="text-center">
+                    <div class="text-center pt-3">
                         <h5><u>Praktische informatie:</u></h5>
                     </div>
                     <div class="col-6 text-center">
