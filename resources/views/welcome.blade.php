@@ -32,7 +32,7 @@
         </div>
         <div class="col-md-3">
             <div class="rounded p-4 infocard events">
-                <h2>Events</h2>
+                <h2>Evenementen</h2>
                 <hr>
                 <div class="description">
                     <p>Op deze pagina kan je opkomende events en hun informatie zien. Wil je zelf een evenement promoten? Dat kan hier ook!</p>
